@@ -1,6 +1,9 @@
 import styles from "./page.module.css";
+import { contentData } from "../content/profile";
 
 export default function Home() {
+  const { profile, capabilities, experience, caseStudies, professionalLinks } = contentData;
+
   return (
     <div className={styles.siteWrapper}>
       {/* 1. Encabezado */}
@@ -10,15 +13,15 @@ export default function Home() {
             <span className={styles.brandMonogram} aria-hidden="true">
               FG
             </span>
-            <span className={styles.brandName}>Fidel Omar García</span>
+            <span className={styles.brandName}>{profile.name}</span>
           </a>
 
           <nav className={styles.siteNav} aria-label="Navegación principal">
             <a href="#perfil" className={styles.navLink}>
               Perfil
             </a>
-            <a href="#capacidades" className={styles.navLink}>
-              Capacidades
+            <a href="#experiencia" className={styles.navLink}>
+              Experiencia
             </a>
             <a href="#proyectos" className={styles.navLink}>
               Proyectos
@@ -35,23 +38,22 @@ export default function Home() {
         {/* 2. Hero */}
         <section id="inicio" className={styles.heroSection} aria-labelledby="hero-title">
           <div className={styles.heroContent}>
-            <span className={styles.tagline}>Ingeniería de software empresarial</span>
+            <span className={styles.tagline}>{profile.tagline}</span>
             <h1 id="hero-title" className={styles.title}>
-              Fidel Omar García
+              {profile.name}
             </h1>
-            <p className={styles.summary}>
-              Ingeniero de software especializado en .NET, SQL Server, APIs e integraciones empresariales.
-            </p>
+            <p className={styles.summary}>{profile.title}</p>
+            <p className={styles.experienceSummary}>{profile.experienceSummary}</p>
             <p className={styles.availability}>
               <span className={styles.availabilityDot} aria-hidden="true" />
-              Disponible para trabajo remoto desde México.
+              {profile.availability}
             </p>
             <div className={styles.heroActions}>
               <a href="#capacidades" className={styles.primaryButton}>
                 Ver capacidades técnicas
               </a>
               <a
-                href="https://www.linkedin.com/in/fidelomar"
+                href={professionalLinks[0].url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.secondaryButton}
@@ -67,30 +69,14 @@ export default function Home() {
               <span className={styles.panelBadge}>Stack base</span>
             </div>
             <ul className={styles.specialtyList}>
-              <li className={styles.specialtyItem}>
-                <span className={styles.specialtyBullet} aria-hidden="true">
-                  01
-                </span>
-                <span>C# / .NET</span>
-              </li>
-              <li className={styles.specialtyItem}>
-                <span className={styles.specialtyBullet} aria-hidden="true">
-                  02
-                </span>
-                <span>SQL Server</span>
-              </li>
-              <li className={styles.specialtyItem}>
-                <span className={styles.specialtyBullet} aria-hidden="true">
-                  03
-                </span>
-                <span>APIs REST</span>
-              </li>
-              <li className={styles.specialtyItem}>
-                <span className={styles.specialtyBullet} aria-hidden="true">
-                  04
-                </span>
-                <span>Integraciones empresariales</span>
-              </li>
+              {profile.specialties.map((item, index) => (
+                <li key={item} className={styles.specialtyItem}>
+                  <span className={styles.specialtyBullet} aria-hidden="true">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span>{item}</span>
+                </li>
+              ))}
             </ul>
           </aside>
         </section>
@@ -104,9 +90,11 @@ export default function Home() {
             </h2>
           </div>
           <div className={styles.profileCard}>
-            <p className={styles.profileLead}>
-              Enfoque en desarrollo backend robusto, diseño de servicios e integración de plataformas empresariales. Información detallada en proceso de consolidación.
-            </p>
+            {profile.paragraphs.map((paragraph, index) => (
+              <p key={index} className={styles.profileParagraph}>
+                {paragraph}
+              </p>
+            ))}
           </div>
         </section>
 
@@ -123,74 +111,115 @@ export default function Home() {
           </div>
 
           <div className={styles.cardsGrid}>
-            <article className={styles.card}>
-              <div className={styles.cardHeader}>
-                <span className={styles.cardIndex} aria-hidden="true">
-                  01
-                </span>
-                <h3 className={styles.cardTitle}>Desarrollo backend</h3>
-              </div>
-              <p className={styles.cardBody}>
-                Construcción de servicios y lógica de negocio orientada a la confiabilidad, aplicando buenas prácticas de arquitectura y código limpio.
-              </p>
-            </article>
-
-            <article className={styles.card}>
-              <div className={styles.cardHeader}>
-                <span className={styles.cardIndex} aria-hidden="true">
-                  02
-                </span>
-                <h3 className={styles.cardTitle}>Bases de datos</h3>
-              </div>
-              <p className={styles.cardBody}>
-                Diseño relacional, persistencia y optimización de consultas estructuradas para el tratamiento consistente de datos transaccionales.
-              </p>
-            </article>
-
-            <article className={styles.card}>
-              <div className={styles.cardHeader}>
-                <span className={styles.cardIndex} aria-hidden="true">
-                  03
-                </span>
-                <h3 className={styles.cardTitle}>APIs e integraciones</h3>
-              </div>
-              <p className={styles.cardBody}>
-                Diseño e implementación de interfaces de programación e intercambio seguro de información entre sistemas empresariales heterogéneos.
-              </p>
-            </article>
-
-            <article className={styles.card}>
-              <div className={styles.cardHeader}>
-                <span className={styles.cardIndex} aria-hidden="true">
-                  04
-                </span>
-                <h3 className={styles.cardTitle}>Modernización de sistemas</h3>
-              </div>
-              <p className={styles.cardBody}>
-                Evolución y estabilización de aplicaciones empresariales existentes, priorizando la continuidad operativa y la escalabilidad técnica.
-              </p>
-            </article>
+            {capabilities.map((cap) => (
+              <article key={cap.id} className={styles.card}>
+                <div className={styles.cardHeader}>
+                  <span className={styles.cardIndex} aria-hidden="true">
+                    {cap.number}
+                  </span>
+                  <h3 className={styles.cardTitle}>{cap.title}</h3>
+                </div>
+                <p className={styles.cardBody}>{cap.description}</p>
+              </article>
+            ))}
           </div>
         </section>
 
-        {/* 5. Sección de proyectos */}
+        {/* 5. Sección de experiencia */}
+        <section id="experiencia" className={styles.section} aria-labelledby="experiencia-heading">
+          <div className={styles.sectionHeader}>
+            <span className={styles.sectionLabel}>Trayectoria</span>
+            <h2 id="experiencia-heading" className={styles.sectionTitle}>
+              Experiencia profesional
+            </h2>
+            <p className={styles.sectionDescription}>
+              Cronología de roles desempeñados en el desarrollo, modernización y soporte de aplicaciones empresariales.
+            </p>
+          </div>
+
+          <div className={styles.timeline}>
+            {experience.map((entry) => (
+              <article key={entry.id} className={styles.timelineItem}>
+                <header className={styles.timelineHeader}>
+                  <div className={styles.timelineMeta}>
+                    <h3 className={styles.timelineRole}>{entry.role}</h3>
+                    {entry.organization && (
+                      <span className={styles.timelineOrg}>{entry.organization}</span>
+                    )}
+                  </div>
+                  <div className={styles.timelineDetails}>
+                    <span className={styles.timelinePeriod}>{entry.period}</span>
+                    {entry.modality && (
+                      <span className={styles.timelineModality}>{entry.modality}</span>
+                    )}
+                  </div>
+                </header>
+                <p className={styles.timelineDescription}>{entry.description}</p>
+                <ul className={styles.timelineList}>
+                  {entry.responsibilities.map((resp, idx) => (
+                    <li key={idx} className={styles.timelineListItem}>
+                      {resp}
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        {/* 6. Sección de proyectos (Casos de estudio) */}
         <section id="proyectos" className={styles.section} aria-labelledby="proyectos-heading">
           <div className={styles.sectionHeader}>
             <span className={styles.sectionLabel}>Casos de estudio</span>
             <h2 id="proyectos-heading" className={styles.sectionTitle}>
-              Proyectos
+              Proyectos y casos de estudio
             </h2>
-          </div>
-          <div className={styles.projectsPlaceholder}>
-            <span className={styles.placeholderStatus}>En preparación</span>
-            <h3 className={styles.placeholderTitle}>Casos de estudio y soluciones técnicas</h3>
-            <p className={styles.placeholderText}>
-              Casos de estudio y soluciones técnicas orientadas a la confiabilidad y mantenibilidad de software empresarial. Contenido en preparación bajo estrictas políticas de anonimización.
+            <p className={styles.sectionDescription}>
+              Soluciones técnicas estructuradas y presentadas bajo políticas de anonimización y confidencialidad comercial.
             </p>
+          </div>
+
+          <div className={styles.caseStudiesGrid}>
+            {caseStudies.map((study) => (
+              <article key={study.id} className={styles.caseCard}>
+                <div className={styles.caseHeader}>
+                  <span className={styles.caseSector}>{study.sector}</span>
+                  <h3 className={styles.caseTitle}>{study.title}</h3>
+                </div>
+
+                <div className={styles.caseContent}>
+                  <div className={styles.caseField}>
+                    <span className={styles.caseLabel}>Desafío</span>
+                    <p className={styles.caseText}>{study.challenge}</p>
+                  </div>
+
+                  <div className={styles.caseField}>
+                    <span className={styles.caseLabel}>Responsabilidad</span>
+                    <p className={styles.caseText}>{study.responsibility}</p>
+                  </div>
+
+                  <div className={styles.caseField}>
+                    <span className={styles.caseLabel}>Resultado</span>
+                    <p className={styles.caseText}>{study.result}</p>
+                  </div>
+                </div>
+
+                <footer className={styles.caseFooter}>
+                  <span className={styles.caseTechLabel}>Tecnologías:</span>
+                  <ul className={styles.techTagList}>
+                    {study.technologies.map((tech) => (
+                      <li key={tech} className={styles.techTag}>
+                        {tech}
+                      </li>
+                    ))}
+                  </ul>
+                </footer>
+              </article>
+            ))}
           </div>
         </section>
 
-        {/* 6. Contacto */}
+        {/* 7. Contacto */}
         <section id="contacto" className={styles.section} aria-labelledby="contacto-heading">
           <div className={styles.sectionHeader}>
             <span className={styles.sectionLabel}>Comunicación</span>
@@ -199,31 +228,34 @@ export default function Home() {
             </h2>
           </div>
           <div className={styles.contactCard}>
-            <ul className={styles.contactList}>
-              <li className={styles.contactChannel}>
-                <a
-                  href="https://www.linkedin.com/in/fidelomar"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  LinkedIn: linkedin.com/in/fidelomar (perfil profesional)
-                </a>
-              </li>
-            </ul>
-            <p className={styles.contactNote}>
-              Canal de comunicación profesional validado. Los enlaces hacia repositorios públicos de GitHub y correo profesional verificado se habilitarán formalmente en etapas posteriores.
+            <p className={styles.contactIntro}>
+              Puedes consultar mi trayectoria profesional en LinkedIn y mis proyectos públicos en GitHub.
             </p>
+            <ul className={styles.contactList}>
+              {professionalLinks.map((link) => (
+                <li key={link.url} className={styles.contactChannel}>
+                  <a
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.contactLink}
+                  >
+                    <span className={styles.contactLinkLabel}>{link.label}</span>: {link.description}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
       </main>
 
-      {/* 7. Pie de página */}
+      {/* 8. Pie de página */}
       <footer className={styles.siteFooter}>
         <div className={styles.footerContainer}>
           <p className={styles.footerCopyright}>
-            © {new Date().getFullYear()} Fidel Omar García
+            © {new Date().getFullYear()} {profile.name}
           </p>
-          <p className={styles.footerNote}>Ingeniería de software empresarial</p>
+          <p className={styles.footerNote}>{profile.tagline}</p>
         </div>
       </footer>
     </div>
