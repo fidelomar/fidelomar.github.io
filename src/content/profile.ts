@@ -68,7 +68,7 @@ export const contentData: ContentData = {
     ],
     paragraphs: [
       "Ingeniero de software con más de 15 años de experiencia desarrollando, manteniendo y modernizando aplicaciones empresariales. Especializado principalmente en el ecosistema C#/.NET, bases de datos SQL Server y diseño de APIs REST, con enfoque constante en la estabilidad de sistemas en producción y la resolución rigurosa de incidencias.",
-      "Cuento con capacidad probada para entender procesos operativos y convertir requerimientos de negocio en soluciones funcionales confiables. Mi trayectoria incluye colaboración remota bajo el marco Scrum y la incorporación disciplinada de herramientas de IA con estricta revisión y validación humana.",
+      "Mi experiencia incluye comprender procesos operativos y convertir requerimientos de negocio en soluciones funcionales. Mi trayectoria incluye colaboración remota bajo el marco Scrum y el uso de herramientas de IA con revisión y validación propias antes de integrar cambios.",
     ],
   },
   capabilities: [
@@ -137,7 +137,7 @@ export const contentData: ContentData = {
       organization: "El Surco",
       period: "2018 – 2022",
       description:
-        "Desarrollo de soluciones móviles y de escritorio para el ámbito agroindustrial y personal operativo.",
+        "Desarrollo y mantenimiento de aplicaciones móviles para el ámbito agroindustrial y personal de campo.",
       responsibilities: [
         "Desarrollo de aplicaciones móviles de nutrición vegetal.",
         "Conversión de calculadoras y reglas de negocio de Excel en aplicaciones.",
@@ -166,7 +166,7 @@ export const contentData: ContentData = {
       organization: "ProInternet",
       period: "2010 – 2016",
       description:
-        "Implementación de aplicaciones web, portales corporativos e intranets institucionales.",
+        "Desarrollo de sitios web, CMS e intranets para empresas de distintos sectores.",
       responsibilities: [
         "Desarrollo de sitios, CMS e intranets.",
         "Programación en PHP, ASP clásico, HTML, CSS y JavaScript.",
@@ -186,7 +186,7 @@ export const contentData: ContentData = {
         "Desarrollo de un servicio en .NET para intercambiar órdenes e inventario entre las plataformas.",
       technologies: [".NET", "APIs REST", "Azure", "Shopify", "Mercado Libre", "SAP"],
       result:
-        "Proyecto concluido satisfactoriamente, logrando el intercambio continuo de pedidos y existencias sin intervención manual.",
+        "Servicio publicado en Azure para registrar órdenes de venta y actualizar existencias entre las plataformas integradas.",
     },
     {
       id: "apis-atencion-telefonica",
@@ -198,7 +198,7 @@ export const contentData: ContentData = {
         "Desarrollo de APIs de integración entre el IVR y la plataforma del centro de llamadas.",
       technologies: ["C#", ".NET", "SQL Server", "APIs REST"],
       result:
-        "Integración operativa que permitió la consulta directa y segura de información transaccional por parte del sistema telefónico.",
+        "APIs utilizadas para consultar saldos e información solicitada mediante la línea telefónica automatizada.",
     },
     {
       id: "apps-moviles-campo",
@@ -210,7 +210,7 @@ export const contentData: ContentData = {
         "Desarrollo y publicación de aplicaciones para Android e iOS a partir de las reglas de cálculo agronómicas.",
       technologies: ["C#", "Xamarin Forms", "Google Play", "App Store"],
       result:
-        "Distribución y disponibilidad de herramientas de cálculo funcionales directamente en dispositivos móviles de usuarios operativos.",
+        "Aplicaciones publicadas en Google Play y App Store para apoyar el trabajo del personal de campo.",
     },
   ],
   professionalLinks: [

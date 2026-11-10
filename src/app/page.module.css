@@ -4,21 +4,24 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background-color: var(--color-bg);
 }
 
+/* 1. Encabezado */
 .siteHeader {
   width: 100%;
   border-bottom: 1px solid var(--color-border);
-  background-color: rgba(251, 251, 249, 0.95);
+  background-color: rgba(251, 251, 249, 0.98);
   position: sticky;
   top: 0;
   z-index: 50;
+  box-shadow: 0 1px 2px rgba(18, 25, 38, 0.03);
 }
 
 .headerContainer {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 1rem 1.5rem;
+  padding: 0.75rem 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -28,12 +31,13 @@
 .brand {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.65rem;
   text-decoration: none;
   color: var(--color-text-primary);
   font-weight: 700;
-  font-size: 1.05rem;
+  font-size: 1rem;
   letter-spacing: -0.01em;
+  min-height: 44px;
 }
 
 .brandMonogram {
@@ -43,23 +47,24 @@
   width: 32px;
   height: 32px;
   border-radius: 6px;
-  background-color: var(--color-accent-subtle);
-  color: var(--color-accent);
-  border: 1px solid var(--color-accent-border);
+  background-color: var(--color-ink-dark);
+  color: #ffffff;
+  border: 1px solid var(--color-border-dark);
   font-family: var(--font-mono);
   font-size: 0.85rem;
   font-weight: 700;
+  letter-spacing: 0.02em;
 }
 
 .brandName {
   font-weight: 700;
+  color: var(--color-text-primary);
 }
 
 .siteNav {
   display: flex;
   align-items: center;
-  gap: 1.75rem;
-  flex-wrap: wrap;
+  gap: 1.5rem;
 }
 
 .navLink {
@@ -67,34 +72,86 @@
   align-items: center;
   color: var(--color-text-secondary);
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: 0.925rem;
   font-weight: 500;
   transition: color 0.15s ease;
   min-height: 44px;
-  padding: 0.5rem 0.25rem;
+  padding: 0.5rem 0.5rem;
 }
 
 .navLink:hover {
-  color: var(--color-text-primary);
+  color: var(--color-accent);
 }
 
+/* Contenido Principal */
 .mainContent {
   width: 100%;
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 3.5rem 1.5rem 5rem;
   display: flex;
   flex-direction: column;
-  gap: 5rem;
 }
 
-/* Hero Section */
+/* scroll-margin-top para anclas: compensa la altura del header sticky (aprox 60px escritorio) */
+.heroSection,
+.sectionBand {
+  scroll-margin-top: 72px;
+}
+
+/* 2. Hero con fondo abstracto técnico */
 .heroSection {
+  position: relative;
+  width: 100%;
+  padding: 3.5rem 1.5rem 4rem;
+  overflow: hidden;
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Fondo abstracto mediante CSS puro, sin imágenes */
+.heroBackdrop {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  /* Fondo radial suave en azul grisáceo + degradado a tono neutro */
+  background:
+    radial-gradient(ellipse 65% 55% at 85% 15%, rgba(61, 84, 110, 0.09) 0%, transparent 70%),
+    radial-gradient(ellipse 55% 45% at 10% 25%, rgba(11, 79, 140, 0.08) 0%, transparent 65%),
+    linear-gradient(180deg, rgba(240, 244, 249, 0.75) 0%, var(--color-bg) 100%);
+}
+
+/* Trama técnica muy discreta de puntos y líneas contenida en hero */
+.heroBackdrop::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(18, 25, 38, 0.065) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.35) 60%, transparent 100%);
+  -webkit-mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.35) 60%, transparent 100%);
+  pointer-events: none;
+}
+
+.heroBackdrop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(11, 79, 140, 0.035) 1px, transparent 1px);
+  background-size: 96px 100%;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, transparent 85%);
+  -webkit-mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, transparent 85%);
+  pointer-events: none;
+}
+
+.heroContainer {
+  position: relative;
+  z-index: 1;
+  max-width: var(--max-width);
+  margin: 0 auto;
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
+  grid-template-columns: 1.25fr 0.75fr;
   gap: 3.5rem;
   align-items: start;
-  padding-bottom: 1rem;
 }
 
 .heroContent {
@@ -107,7 +164,7 @@
   display: inline-flex;
   align-items: center;
   font-family: var(--font-mono);
-  font-size: 0.825rem;
+  font-size: 0.8rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -121,16 +178,16 @@
 
 .title {
   margin: 0;
-  font-size: 2.75rem;
+  font-size: 2.5rem;
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.15;
-  color: var(--color-text-primary);
+  color: var(--color-ink-dark);
 }
 
 .summary {
   margin: 0;
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   line-height: 1.55;
   color: var(--color-text-secondary);
   max-width: 36rem;
@@ -174,15 +231,17 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  min-height: 44px;
   padding: 0.75rem 1.4rem;
   border-radius: 6px;
-  background-color: var(--color-accent);
+  background-color: var(--color-tech-blue);
   color: #ffffff;
   font-weight: 600;
   font-size: 0.95rem;
   text-decoration: none;
-  transition: background-color 0.15s ease, transform 0.1s ease;
-  box-shadow: 0 1px 3px rgba(11, 79, 140, 0.2);
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+  box-shadow: 0 1px 3px rgba(11, 79, 140, 0.25);
+  border: 1px solid transparent;
 }
 
 .primaryButton:hover {
@@ -194,9 +253,10 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  min-height: 44px;
   padding: 0.75rem 1.4rem;
   border-radius: 6px;
-  background-color: var(--color-surface);
+  background-color: var(--color-surface-white);
   color: var(--color-text-primary);
   border: 1px solid var(--color-border);
   font-weight: 600;
@@ -207,27 +267,28 @@
 
 .secondaryButton:hover {
   background-color: var(--color-surface-subtle);
-  border-color: var(--color-text-muted);
-  color: var(--color-text-primary);
+  border-color: var(--color-slate-blue);
+  color: var(--color-ink-dark);
 }
 
-/* Panel complementario del Hero */
+/* Panel de Especialidades (Contrapeso visual: azul petróleo oscuro) */
 .heroPanel {
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
+  background: linear-gradient(175deg, #121926 0%, #0f1c2e 100%);
+  border: 1px solid var(--color-border-dark);
   border-radius: 8px;
   padding: 1.75rem;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-  box-shadow: 0 1px 3px rgba(18, 25, 38, 0.04);
+  box-shadow: 0 4px 16px rgba(18, 25, 38, 0.12);
+  color: #ffffff;
 }
 
 .panelHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid var(--color-border-subtle);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   padding-bottom: 0.85rem;
 }
 
@@ -237,17 +298,18 @@
   font-family: var(--font-mono);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--color-text-muted);
+  letter-spacing: 0.06em;
+  color: var(--color-text-dark-secondary);
 }
 
 .panelBadge {
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  color: var(--color-accent);
-  background-color: var(--color-accent-subtle);
-  padding: 0.15rem 0.5rem;
-  border-radius: 3px;
+  color: var(--color-accent-teal-light);
+  background-color: rgba(94, 234, 212, 0.12);
+  border: 1px solid rgba(94, 234, 212, 0.28);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
 }
 
 .specialtyList {
@@ -256,72 +318,51 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
+  gap: 0.95rem;
 }
 
 .specialtyItem {
   display: flex;
   align-items: baseline;
-  gap: 0.75rem;
+  gap: 0.85rem;
   font-size: 0.95rem;
-  color: var(--color-text-primary);
+  color: var(--color-text-dark-primary);
   font-weight: 500;
 }
 
 .specialtyBullet {
-  color: var(--color-accent);
+  color: var(--color-accent-cyan);
   font-family: var(--font-mono);
   font-weight: 700;
   font-size: 0.8rem;
 }
 
-/* Estructura común para secciones */
-.section {
-  display: flex;
-  flex-direction: column;
-  gap: 1.75rem;
+/* Ritmo visual: Bandas completas entre secciones */
+.sectionBand {
+  width: 100%;
+  padding: 4.5rem 1.5rem;
 }
 
-.sectionHeader {
+.sectionInner {
+  max-width: var(--max-width);
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 2rem;
+}
+
+/* 3. Perfil: Superficie azul muy clara */
+.perfilBand {
+  background-color: var(--color-bg-blue-soft);
   border-bottom: 1px solid var(--color-border);
-  padding-bottom: 1rem;
 }
 
-.sectionLabel {
-  margin: 0;
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--color-accent);
-}
-
-.sectionTitle {
-  margin: 0;
-  font-size: 1.75rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--color-text-primary);
-}
-
-.sectionDescription {
-  margin: 0;
-  font-size: 1.05rem;
-  color: var(--color-text-secondary);
-  line-height: 1.6;
-  max-width: 44rem;
-}
-
-/* Sección de Perfil */
 .profileCard {
-  background-color: var(--color-surface);
+  background-color: var(--color-surface-white);
   border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-tech-blue);
   border-radius: 8px;
-  padding: 2rem;
+  padding: 2.25rem;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
@@ -331,76 +372,121 @@
 .profileParagraph {
   margin: 0;
   font-size: 1.05rem;
-  line-height: 1.65;
+  line-height: 1.68;
   color: var(--color-text-secondary);
 }
 
-/* Sección de Capacidades (Tarjetas) */
+/* 4. Capacidades: Fondo neutro base */
+.capacidadesBand {
+  background-color: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+}
+
 .cardsGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
+  gap: 1.75rem;
 }
 
 .card {
-  background-color: var(--color-surface);
+  background-color: var(--color-surface-white);
   border: 1px solid var(--color-border);
+  border-top: 3px solid var(--color-slate-blue);
   border-radius: 8px;
-  padding: 1.75rem;
+  padding: 1.85rem;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  box-shadow: 0 1px 3px rgba(18, 25, 38, 0.04);
-  transition: border-color 0.15s ease;
+  box-shadow: 0 1px 3px rgba(18, 25, 38, 0.03);
+  transition: border-color 0.15s ease, background-color 0.15s ease;
 }
 
 .card:hover {
+  background-color: #fafbfc;
   border-color: var(--color-accent-border);
+  border-top-color: var(--color-tech-blue);
 }
 
 .cardHeader {
   display: flex;
-  align-items: center;
-  gap: 0.6rem;
+  align-items: baseline;
+  gap: 0.75rem;
 }
 
 .cardIndex {
   font-family: var(--font-mono);
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--color-accent);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-tech-blue);
 }
 
 .cardTitle {
   margin: 0;
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: var(--color-text-primary);
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: var(--color-ink-dark);
 }
 
 .cardBody {
   margin: 0;
   font-size: 0.95rem;
-  line-height: 1.55;
+  line-height: 1.58;
   color: var(--color-text-secondary);
 }
 
-/* Sección de Experiencia */
+/* 5. Experiencia: Franja ligeramente cálida (arena suave) */
+.experienciaBand {
+  background-color: var(--color-bg-sand);
+  border-bottom: 1px solid var(--color-border-warm);
+}
+
 .timeline {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2rem;
+  padding-left: 2rem;
+}
+
+/* Línea vertical de tiempo */
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 14px;
+  bottom: 14px;
+  width: 2px;
+  background-color: var(--color-accent-border);
 }
 
 .timelineItem {
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-left: 3px solid var(--color-accent);
-  border-radius: 8px;
-  padding: 1.75rem;
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
+}
+
+/* Nodo circular discreto */
+.timelineMarker {
+  position: absolute;
+  left: -2rem;
+  top: 1.75rem;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: var(--color-surface-white);
+  border: 3px solid var(--color-tech-blue);
+  box-shadow: 0 0 0 2px var(--color-bg-sand);
+  z-index: 2;
+}
+
+.timelineCard {
+  background-color: var(--color-surface-white);
+  border: 1px solid var(--color-border-warm);
+  border-radius: 8px;
+  padding: 1.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
   box-shadow: 0 1px 3px rgba(18, 25, 38, 0.04);
 }
 
@@ -411,7 +497,7 @@
   gap: 1rem;
   flex-wrap: wrap;
   border-bottom: 1px solid var(--color-border-subtle);
-  padding-bottom: 0.75rem;
+  padding-bottom: 0.85rem;
 }
 
 .timelineMeta {
@@ -424,14 +510,14 @@
   margin: 0;
   font-size: 1.2rem;
   font-weight: 700;
-  color: var(--color-text-primary);
+  color: var(--color-ink-dark);
   letter-spacing: -0.01em;
 }
 
 .timelineOrg {
   font-size: 0.95rem;
   font-weight: 600;
-  color: var(--color-accent);
+  color: var(--color-tech-blue);
 }
 
 .timelineDetails {
@@ -446,7 +532,8 @@
   font-size: 0.825rem;
   color: var(--color-text-secondary);
   background-color: var(--color-surface-subtle);
-  padding: 0.2rem 0.55rem;
+  border: 1px solid var(--color-border);
+  padding: 0.25rem 0.6rem;
   border-radius: 4px;
 }
 
@@ -454,9 +541,9 @@
   font-family: var(--font-mono);
   font-size: 0.75rem;
   font-weight: 600;
-  color: var(--color-accent);
+  color: var(--color-tech-blue);
   background-color: var(--color-accent-subtle);
-  padding: 0.2rem 0.5rem;
+  padding: 0.25rem 0.55rem;
   border-radius: 4px;
   border: 1px solid var(--color-accent-border);
   text-transform: uppercase;
@@ -475,7 +562,7 @@
   padding-left: 1.25rem;
   display: flex;
   flex-direction: column;
-  gap: 0.45rem;
+  gap: 0.5rem;
 }
 
 .timelineListItem {
@@ -484,18 +571,24 @@
   color: var(--color-text-primary);
 }
 
-/* Sección de Casos de estudio (Proyectos) */
+/* 6. Proyectos: Fondo azul grisáceo muy claro */
+.proyectosBand {
+  background-color: var(--color-bg-slate-soft);
+  border-bottom: 1px solid var(--color-border);
+}
+
 .caseStudiesGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  gap: 1.85rem;
 }
 
 .caseCard {
-  background-color: var(--color-surface);
+  background-color: var(--color-surface-white);
   border: 1px solid var(--color-border);
+  border-top: 3px solid var(--color-tech-blue);
   border-radius: 8px;
-  padding: 1.75rem;
+  padding: 1.85rem;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
@@ -505,21 +598,22 @@
 
 .caseCard:hover {
   border-color: var(--color-accent-border);
+  border-top-color: var(--color-accent-hover);
 }
 
 .caseHeader {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 0.45rem;
   border-bottom: 1px solid var(--color-border-subtle);
-  padding-bottom: 0.85rem;
+  padding-bottom: 0.9rem;
 }
 
 .caseSector {
   font-family: var(--font-mono);
   font-size: 0.775rem;
   font-weight: 600;
-  color: var(--color-accent);
+  color: var(--color-tech-blue);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -528,14 +622,14 @@
   margin: 0;
   font-size: 1.25rem;
   font-weight: 700;
-  color: var(--color-text-primary);
+  color: var(--color-ink-dark);
   line-height: 1.35;
 }
 
 .caseContent {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.1rem;
   flex-grow: 1;
 }
 
@@ -564,7 +658,7 @@
 .caseFooter {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.6rem;
   border-top: 1px solid var(--color-border-subtle);
   padding-top: 1rem;
   margin-top: auto;
@@ -585,36 +679,61 @@
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
+  gap: 0.45rem;
 }
 
 .techTag {
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  color: var(--color-text-primary);
+  color: var(--color-ink-dark);
   background-color: var(--color-surface-subtle);
-  border: 1px solid var(--color-border-subtle);
-  padding: 0.2rem 0.5rem;
+  border: 1px solid var(--color-border);
+  padding: 0.25rem 0.55rem;
   border-radius: 4px;
 }
 
-/* Sección de Contacto */
-.contactCard {
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-  padding: 2rem;
+/* 7. Contacto: Cierre visual sólido en azul tinta oscuro */
+.contactoBand {
+  background: linear-gradient(180deg, #121926 0%, #0f1c2e 100%);
+  color: #ffffff;
+  padding: 4.5rem 1.5rem 5rem;
+}
+
+.contactContainer {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
-  box-shadow: 0 1px 3px rgba(18, 25, 38, 0.04);
+  gap: 2rem;
+  max-width: 44rem;
+}
+
+.contactHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.contactLabel {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-accent-teal-light);
+}
+
+.contactTitle {
+  margin: 0;
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--color-text-dark-primary);
+  letter-spacing: -0.02em;
 }
 
 .contactIntro {
   margin: 0;
   font-size: 1.05rem;
   line-height: 1.6;
-  color: var(--color-text-secondary);
+  color: var(--color-text-dark-secondary);
 }
 
 .contactList {
@@ -623,44 +742,96 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 1rem;
 }
 
 .contactChannel {
   display: flex;
-  align-items: center;
 }
 
 .contactLink {
-  font-size: 1rem;
-  color: var(--color-accent);
-  text-decoration: underline;
-  text-underline-offset: 3px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1rem 1.25rem;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--color-border-dark);
+  text-decoration: none;
+  min-height: 44px;
+  width: 100%;
+  max-width: 32rem;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.contactLink:hover {
+  background-color: rgba(255, 255, 255, 0.09);
+  border-color: var(--color-accent-cyan);
 }
 
 .contactLinkLabel {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.contactLinkDesc {
+  font-size: 0.9rem;
+  color: var(--color-text-dark-secondary);
+}
+
+/* Encabezados de sección comunes */
+.sectionHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 1rem;
+}
+
+.sectionLabel {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
   font-weight: 600;
-  color: var(--color-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-tech-blue);
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-ink-dark);
+}
+
+.sectionDescription {
+  margin: 0;
+  font-size: 1.05rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  max-width: 44rem;
 }
 
 /* Pie de página */
 .siteFooter {
   width: 100%;
-  border-top: 1px solid var(--color-border);
-  background-color: var(--color-surface);
-  margin-top: auto;
+  border-top: 1px solid var(--color-border-dark);
+  background-color: var(--color-ink-dark);
 }
 
 .footerContainer {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 2rem 1.5rem;
+  padding: 1.75rem 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 1rem;
-  color: var(--color-text-muted);
+  color: var(--color-text-dark-muted);
   font-size: 0.875rem;
 }
 
@@ -672,9 +843,9 @@
   margin: 0;
 }
 
-/* Responsive Breakpoints */
+/* Breakpoints Responsive */
 @media (max-width: 900px) {
-  .heroSection {
+  .heroContainer {
     grid-template-columns: 1fr;
     gap: 2.5rem;
   }
@@ -683,32 +854,68 @@
     font-size: 2.25rem;
   }
 
+  .cardsGrid {
+    grid-template-columns: 1fr;
+  }
+
   .caseStudiesGrid {
     grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 640px) {
-  .mainContent {
-    padding: 2.5rem 1.25rem 4rem;
-    gap: 3.5rem;
+  /* En móvil el encabezado pasa a static para no obstaculizar la vista ni el scroll */
+  .siteHeader {
+    position: static;
+  }
+
+  /* El scroll-margin-top se reduce en móvil al no haber header sticky */
+  .heroSection,
+  .sectionBand {
+    scroll-margin-top: 16px;
   }
 
   .headerContainer {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 0.75rem;
-    padding: 0.75rem 1.25rem;
+    align-items: stretch;
+    padding: 0.75rem 1rem;
+    gap: 0.65rem;
   }
 
+  .brand {
+    justify-content: flex-start;
+    min-height: 44px;
+  }
+
+  /* Navegación en cuadrícula compacta 2x2 */
   .siteNav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.4rem;
     width: 100%;
-    gap: 0.5rem 1.25rem;
   }
 
   .navLink {
     min-height: 44px;
-    padding: 0.6rem 0.25rem;
+    padding: 0.5rem 0.65rem;
+    background-color: var(--color-surface-subtle);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    justify-content: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .navLink:hover {
+    background-color: var(--color-accent-subtle);
+  }
+
+  .heroSection {
+    padding: 2.25rem 1rem 3rem;
+  }
+
+  .sectionBand {
+    padding: 3.25rem 1rem;
   }
 
   .title {
@@ -719,12 +926,33 @@
     font-size: 1.1rem;
   }
 
-  .cardsGrid {
-    grid-template-columns: 1fr;
+  .profileCard {
+    padding: 1.5rem;
   }
 
-  .timelineItem {
-    padding: 1.25rem;
+  .card {
+    padding: 1.5rem;
+  }
+
+  /* Experiencia en móvil: ajuste fino de la línea de tiempo */
+  .timeline {
+    padding-left: 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .timeline::before {
+    left: 5px;
+  }
+
+  .timelineMarker {
+    left: -1.5rem;
+    top: 1.5rem;
+    width: 12px;
+    height: 12px;
+  }
+
+  .timelineCard {
+    padding: 1.35rem;
   }
 
   .timelineHeader {
@@ -734,11 +962,12 @@
   }
 
   .caseCard {
-    padding: 1.25rem;
+    padding: 1.35rem;
   }
 
   .footerContainer {
     flex-direction: column;
     align-items: flex-start;
+    padding: 1.5rem 1rem;
   }
 }

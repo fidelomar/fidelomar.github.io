@@ -37,214 +37,231 @@ export default function Home() {
       <main id="main-content" className={styles.mainContent}>
         {/* 2. Hero */}
         <section id="inicio" className={styles.heroSection} aria-labelledby="hero-title">
-          <div className={styles.heroContent}>
-            <span className={styles.tagline}>{profile.tagline}</span>
-            <h1 id="hero-title" className={styles.title}>
-              {profile.name}
-            </h1>
-            <p className={styles.summary}>{profile.title}</p>
-            <p className={styles.experienceSummary}>{profile.experienceSummary}</p>
-            <p className={styles.availability}>
-              <span className={styles.availabilityDot} aria-hidden="true" />
-              {profile.availability}
-            </p>
-            <div className={styles.heroActions}>
-              <a href="#capacidades" className={styles.primaryButton}>
-                Ver capacidades técnicas
-              </a>
-              <a
-                href={professionalLinks[0].url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.secondaryButton}
-              >
-                LinkedIn (perfil profesional)
-              </a>
+          <div className={styles.heroBackdrop} aria-hidden="true" />
+          <div className={styles.heroContainer}>
+            <div className={styles.heroContent}>
+              <span className={styles.tagline}>{profile.tagline}</span>
+              <h1 id="hero-title" className={styles.title}>
+                {profile.name}
+              </h1>
+              <p className={styles.summary}>{profile.title}</p>
+              <p className={styles.experienceSummary}>{profile.experienceSummary}</p>
+              <p className={styles.availability}>
+                <span className={styles.availabilityDot} aria-hidden="true" />
+                {profile.availability}
+              </p>
+              <div className={styles.heroActions}>
+                <a href="#capacidades" className={styles.primaryButton}>
+                  Ver capacidades técnicas
+                </a>
+                <a
+                  href={professionalLinks[0].url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.secondaryButton}
+                >
+                  LinkedIn (perfil profesional)
+                </a>
+              </div>
             </div>
-          </div>
 
-          <aside className={styles.heroPanel} aria-label="Especialidades principales">
-            <div className={styles.panelHeader}>
-              <h2 className={styles.panelTitle}>Especialidades</h2>
-              <span className={styles.panelBadge}>Stack base</span>
-            </div>
-            <ul className={styles.specialtyList}>
-              {profile.specialties.map((item, index) => (
-                <li key={item} className={styles.specialtyItem}>
-                  <span className={styles.specialtyBullet} aria-hidden="true">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </aside>
+            <aside className={styles.heroPanel} aria-label="Especialidades principales">
+              <div className={styles.panelHeader}>
+                <h2 className={styles.panelTitle}>Especialidades</h2>
+                <span className={styles.panelBadge}>Stack base</span>
+              </div>
+              <ul className={styles.specialtyList}>
+                {profile.specialties.map((item, index) => (
+                  <li key={item} className={styles.specialtyItem}>
+                    <span className={styles.specialtyBullet} aria-hidden="true">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </aside>
+          </div>
         </section>
 
         {/* 3. Sección de perfil */}
-        <section id="perfil" className={styles.section} aria-labelledby="perfil-heading">
-          <div className={styles.sectionHeader}>
-            <span className={styles.sectionLabel}>Enfoque</span>
-            <h2 id="perfil-heading" className={styles.sectionTitle}>
-              Perfil profesional
-            </h2>
-          </div>
-          <div className={styles.profileCard}>
-            {profile.paragraphs.map((paragraph, index) => (
-              <p key={index} className={styles.profileParagraph}>
-                {paragraph}
-              </p>
-            ))}
+        <section id="perfil" className={`${styles.sectionBand} ${styles.perfilBand}`} aria-labelledby="perfil-heading">
+          <div className={styles.sectionInner}>
+            <div className={styles.sectionHeader}>
+              <span className={styles.sectionLabel}>Enfoque</span>
+              <h2 id="perfil-heading" className={styles.sectionTitle}>
+                Perfil profesional
+              </h2>
+            </div>
+            <div className={styles.profileCard}>
+              {profile.paragraphs.map((paragraph, index) => (
+                <p key={index} className={styles.profileParagraph}>
+                  {paragraph}
+                </p>
+              ))}
+            </div>
           </div>
         </section>
 
         {/* 4. Sección de capacidades */}
-        <section id="capacidades" className={styles.section} aria-labelledby="capacidades-heading">
-          <div className={styles.sectionHeader}>
-            <span className={styles.sectionLabel}>Competencias</span>
-            <h2 id="capacidades-heading" className={styles.sectionTitle}>
-              Capacidades técnicas
-            </h2>
-            <p className={styles.sectionDescription}>
-              Áreas de práctica aplicadas al diseño y mantenimiento de software corporativo con altos estándares de estabilidad y mantenibilidad.
-            </p>
-          </div>
+        <section id="capacidades" className={`${styles.sectionBand} ${styles.capacidadesBand}`} aria-labelledby="capacidades-heading">
+          <div className={styles.sectionInner}>
+            <div className={styles.sectionHeader}>
+              <span className={styles.sectionLabel}>Competencias</span>
+              <h2 id="capacidades-heading" className={styles.sectionTitle}>
+                Capacidades técnicas
+              </h2>
+              <p className={styles.sectionDescription}>
+                Áreas de práctica aplicadas al desarrollo y mantenimiento de software empresarial.
+              </p>
+            </div>
 
-          <div className={styles.cardsGrid}>
-            {capabilities.map((cap) => (
-              <article key={cap.id} className={styles.card}>
-                <div className={styles.cardHeader}>
-                  <span className={styles.cardIndex} aria-hidden="true">
-                    {cap.number}
-                  </span>
-                  <h3 className={styles.cardTitle}>{cap.title}</h3>
-                </div>
-                <p className={styles.cardBody}>{cap.description}</p>
-              </article>
-            ))}
+            <div className={styles.cardsGrid}>
+              {capabilities.map((cap) => (
+                <article key={cap.id} className={styles.card}>
+                  <div className={styles.cardHeader}>
+                    <span className={styles.cardIndex} aria-hidden="true">
+                      {cap.number}
+                    </span>
+                    <h3 className={styles.cardTitle}>{cap.title}</h3>
+                  </div>
+                  <p className={styles.cardBody}>{cap.description}</p>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 
         {/* 5. Sección de experiencia */}
-        <section id="experiencia" className={styles.section} aria-labelledby="experiencia-heading">
-          <div className={styles.sectionHeader}>
-            <span className={styles.sectionLabel}>Trayectoria</span>
-            <h2 id="experiencia-heading" className={styles.sectionTitle}>
-              Experiencia profesional
-            </h2>
-            <p className={styles.sectionDescription}>
-              Cronología de roles desempeñados en el desarrollo, modernización y soporte de aplicaciones empresariales.
-            </p>
-          </div>
+        <section id="experiencia" className={`${styles.sectionBand} ${styles.experienciaBand}`} aria-labelledby="experiencia-heading">
+          <div className={styles.sectionInner}>
+            <div className={styles.sectionHeader}>
+              <span className={styles.sectionLabel}>Trayectoria</span>
+              <h2 id="experiencia-heading" className={styles.sectionTitle}>
+                Experiencia profesional
+              </h2>
+              <p className={styles.sectionDescription}>
+                Cronología de roles desempeñados en el desarrollo, modernización y soporte de aplicaciones empresariales.
+              </p>
+            </div>
 
-          <div className={styles.timeline}>
-            {experience.map((entry) => (
-              <article key={entry.id} className={styles.timelineItem}>
-                <header className={styles.timelineHeader}>
-                  <div className={styles.timelineMeta}>
-                    <h3 className={styles.timelineRole}>{entry.role}</h3>
-                    {entry.organization && (
-                      <span className={styles.timelineOrg}>{entry.organization}</span>
-                    )}
+            <div className={styles.timeline}>
+              {experience.map((entry) => (
+                <article key={entry.id} className={styles.timelineItem}>
+                  <div className={styles.timelineMarker} aria-hidden="true" />
+                  <div className={styles.timelineCard}>
+                    <header className={styles.timelineHeader}>
+                      <div className={styles.timelineMeta}>
+                        <h3 className={styles.timelineRole}>{entry.role}</h3>
+                        {entry.organization && (
+                          <span className={styles.timelineOrg}>{entry.organization}</span>
+                        )}
+                      </div>
+                      <div className={styles.timelineDetails}>
+                        <span className={styles.timelinePeriod}>{entry.period}</span>
+                        {entry.modality && (
+                          <span className={styles.timelineModality}>{entry.modality}</span>
+                        )}
+                      </div>
+                    </header>
+                    <p className={styles.timelineDescription}>{entry.description}</p>
+                    <ul className={styles.timelineList}>
+                      {entry.responsibilities.map((resp, idx) => (
+                        <li key={idx} className={styles.timelineListItem}>
+                          {resp}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <div className={styles.timelineDetails}>
-                    <span className={styles.timelinePeriod}>{entry.period}</span>
-                    {entry.modality && (
-                      <span className={styles.timelineModality}>{entry.modality}</span>
-                    )}
-                  </div>
-                </header>
-                <p className={styles.timelineDescription}>{entry.description}</p>
-                <ul className={styles.timelineList}>
-                  {entry.responsibilities.map((resp, idx) => (
-                    <li key={idx} className={styles.timelineListItem}>
-                      {resp}
-                    </li>
-                  ))}
-                </ul>
-              </article>
-            ))}
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 
         {/* 6. Sección de proyectos (Casos de estudio) */}
-        <section id="proyectos" className={styles.section} aria-labelledby="proyectos-heading">
-          <div className={styles.sectionHeader}>
-            <span className={styles.sectionLabel}>Casos de estudio</span>
-            <h2 id="proyectos-heading" className={styles.sectionTitle}>
-              Proyectos y casos de estudio
-            </h2>
-            <p className={styles.sectionDescription}>
-              Soluciones técnicas estructuradas y presentadas bajo políticas de anonimización y confidencialidad comercial.
-            </p>
-          </div>
+        <section id="proyectos" className={`${styles.sectionBand} ${styles.proyectosBand}`} aria-labelledby="proyectos-heading">
+          <div className={styles.sectionInner}>
+            <div className={styles.sectionHeader}>
+              <span className={styles.sectionLabel}>Casos de estudio</span>
+              <h2 id="proyectos-heading" className={styles.sectionTitle}>
+                Proyectos y casos de estudio
+              </h2>
+              <p className={styles.sectionDescription}>
+                Soluciones técnicas estructuradas y presentadas bajo políticas de anonimización y confidencialidad comercial.
+              </p>
+            </div>
 
-          <div className={styles.caseStudiesGrid}>
-            {caseStudies.map((study) => (
-              <article key={study.id} className={styles.caseCard}>
-                <div className={styles.caseHeader}>
-                  <span className={styles.caseSector}>{study.sector}</span>
-                  <h3 className={styles.caseTitle}>{study.title}</h3>
-                </div>
-
-                <div className={styles.caseContent}>
-                  <div className={styles.caseField}>
-                    <span className={styles.caseLabel}>Desafío</span>
-                    <p className={styles.caseText}>{study.challenge}</p>
+            <div className={styles.caseStudiesGrid}>
+              {caseStudies.map((study) => (
+                <article key={study.id} className={styles.caseCard}>
+                  <div className={styles.caseHeader}>
+                    <span className={styles.caseSector}>{study.sector}</span>
+                    <h3 className={styles.caseTitle}>{study.title}</h3>
                   </div>
 
-                  <div className={styles.caseField}>
-                    <span className={styles.caseLabel}>Responsabilidad</span>
-                    <p className={styles.caseText}>{study.responsibility}</p>
+                  <div className={styles.caseContent}>
+                    <div className={styles.caseField}>
+                      <span className={styles.caseLabel}>Desafío</span>
+                      <p className={styles.caseText}>{study.challenge}</p>
+                    </div>
+
+                    <div className={styles.caseField}>
+                      <span className={styles.caseLabel}>Responsabilidad</span>
+                      <p className={styles.caseText}>{study.responsibility}</p>
+                    </div>
+
+                    <div className={styles.caseField}>
+                      <span className={styles.caseLabel}>Resultado</span>
+                      <p className={styles.caseText}>{study.result}</p>
+                    </div>
                   </div>
 
-                  <div className={styles.caseField}>
-                    <span className={styles.caseLabel}>Resultado</span>
-                    <p className={styles.caseText}>{study.result}</p>
-                  </div>
-                </div>
-
-                <footer className={styles.caseFooter}>
-                  <span className={styles.caseTechLabel}>Tecnologías:</span>
-                  <ul className={styles.techTagList}>
-                    {study.technologies.map((tech) => (
-                      <li key={tech} className={styles.techTag}>
-                        {tech}
-                      </li>
-                    ))}
-                  </ul>
-                </footer>
-              </article>
-            ))}
+                  <footer className={styles.caseFooter}>
+                    <span className={styles.caseTechLabel}>Tecnologías:</span>
+                    <ul className={styles.techTagList}>
+                      {study.technologies.map((tech) => (
+                        <li key={tech} className={styles.techTag}>
+                          {tech}
+                        </li>
+                      ))}
+                    </ul>
+                  </footer>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 
         {/* 7. Contacto */}
-        <section id="contacto" className={styles.section} aria-labelledby="contacto-heading">
-          <div className={styles.sectionHeader}>
-            <span className={styles.sectionLabel}>Comunicación</span>
-            <h2 id="contacto-heading" className={styles.sectionTitle}>
-              Contacto
-            </h2>
-          </div>
-          <div className={styles.contactCard}>
-            <p className={styles.contactIntro}>
-              Puedes consultar mi trayectoria profesional en LinkedIn y mis proyectos públicos en GitHub.
-            </p>
-            <ul className={styles.contactList}>
-              {professionalLinks.map((link) => (
-                <li key={link.url} className={styles.contactChannel}>
-                  <a
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={styles.contactLink}
-                  >
-                    <span className={styles.contactLinkLabel}>{link.label}</span>: {link.description}
-                  </a>
-                </li>
-              ))}
-            </ul>
+        <section id="contacto" className={`${styles.sectionBand} ${styles.contactoBand}`} aria-labelledby="contacto-heading">
+          <div className={styles.sectionInner}>
+            <div className={styles.contactContainer}>
+              <div className={styles.contactHeader}>
+                <span className={styles.contactLabel}>Comunicación</span>
+                <h2 id="contacto-heading" className={styles.contactTitle}>
+                  Contacto profesional
+                </h2>
+                <p className={styles.contactIntro}>
+                  Puedes consultar mi trayectoria profesional en LinkedIn y mis proyectos públicos en GitHub.
+                </p>
+              </div>
+              <ul className={styles.contactList}>
+                {professionalLinks.map((link) => (
+                  <li key={link.url} className={styles.contactChannel}>
+                    <a
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.contactLink}
+                    >
+                      <span className={styles.contactLinkLabel}>{link.label}</span>
+                      <span className={styles.contactLinkDesc}>{link.description}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </section>
       </main>

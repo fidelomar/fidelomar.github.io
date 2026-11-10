@@ -5,24 +5,58 @@
 }
 
 :root {
-  /* Paleta cromática: Fondo claro cálido y texto azul tinta muy oscuro */
+  /* Paleta base obligatoria */
+  --color-ink-dark: #121926;        /* Azul tinta oscuro */
+  --color-tech-blue: #0b4f8c;       /* Azul técnico */
+  --color-bg-warm: #fbfbf9;         /* Fondo cálido claro base */
+  --color-surface-white: #ffffff;   /* Blanco para superficies */
+
+  /* Nuevos tonos de soporte controlados */
+  --color-petroleum-dark: #0f1c2e;  /* Azul petróleo oscuro */
+  --color-petroleum-card: #142338;  /* Superficie azul petróleo panel */
+  --color-slate-blue: #3d546e;      /* Azul grisáceo */
+  --color-teal-subtle: #2a9d8f;     /* Verde azulado sobrio */
+  --color-teal-badge: #1d7066;      /* Verde azulado oscuro para badges */
+
+  /* Fondos alternados para ritmo visual entre secciones (máximo 3 familias) */
+  /* Familia 1: Neutro / Cálido claro (base y experiencia) */
   --color-bg: #fbfbf9;
+  --color-bg-sand: #f5f4ef;         /* Franja ligeramente cálida / arena */
+
+  /* Familia 2: Azul claro técnico / azul grisáceo tenue */
+  --color-bg-blue-soft: #f0f4f9;    /* Superficie azul muy clara (Perfil) */
+  --color-bg-slate-soft: #eff3f6;   /* Fondo azul grisáceo muy claro (Proyectos) */
+
+  /* Familia 3: Bloque oscuro / Tinta (Hero panel, Contacto y Footer) */
+  --color-bg-ink-block: #121926;
+
+  /* Superficies y bordes */
   --color-surface: #ffffff;
-  --color-surface-subtle: #f4f4f0;
+  --color-surface-subtle: #f4f5f7;
   --color-surface-elevated: #ffffff;
 
-  --color-text-primary: #121926;
-  --color-text-secondary: #475467;
-  --color-text-muted: #667085;
+  --color-border: #dde2ea;
+  --color-border-subtle: #edf0f4;
+  --color-border-warm: #e3e2dc;
+  --color-border-dark: #223249;
 
-  --color-border: #e4e7ec;
-  --color-border-subtle: #f0f2f5;
+  /* Tipografía y textos (Cumplimiento WCAG AA) */
+  --color-text-primary: #121926;    /* Contraste > 14:1 sobre fondos claros */
+  --color-text-secondary: #3d4a5d;  /* Contraste > 7:1 sobre fondos claros */
+  --color-text-muted: #5e6b7d;      /* Contraste > 4.6:1 sobre fondos claros */
 
-  /* Azul sobrio de ingeniería como color de acento */
+  /* Textos sobre fondo oscuro */
+  --color-text-dark-primary: #f0f4f8;   /* Contraste > 12:1 sobre ink dark */
+  --color-text-dark-secondary: #c2cfdd; /* Contraste > 7:1 sobre ink dark */
+  --color-text-dark-muted: #8fa2b8;     /* Contraste > 4.8:1 sobre ink dark */
+
+  /* Acentos y estados */
   --color-accent: #0b4f8c;
-  --color-accent-hover: #07345e;
-  --color-accent-subtle: #eef4fb;
-  --color-accent-border: #cbdff4;
+  --color-accent-hover: #07355e;
+  --color-accent-subtle: #eaf1f8;
+  --color-accent-border: #bcd5ef;
+  --color-accent-cyan: #38bdf8;         /* Acento sutil sobre fondo oscuro */
+  --color-accent-teal-light: #5eead4;    /* Verde azulado sutil sobre fondo oscuro */
 
   --color-focus: #0b4f8c;
 
