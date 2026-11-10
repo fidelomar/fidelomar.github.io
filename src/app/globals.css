@@ -5,16 +5,31 @@
 }
 
 :root {
-  --color-bg: #fcfcfc;
+  /* Paleta cromática: Fondo claro cálido y texto azul tinta muy oscuro */
+  --color-bg: #fbfbf9;
   --color-surface: #ffffff;
-  --color-text-primary: #171717;
-  --color-text-secondary: #525252;
-  --color-border: #e5e5e5;
-  --color-link: #0969da;
-  --color-link-hover: #1f2328;
-  --color-focus: #0969da;
+  --color-surface-subtle: #f4f4f0;
+  --color-surface-elevated: #ffffff;
+
+  --color-text-primary: #121926;
+  --color-text-secondary: #475467;
+  --color-text-muted: #667085;
+
+  --color-border: #e4e7ec;
+  --color-border-subtle: #f0f2f5;
+
+  /* Azul sobrio de ingeniería como color de acento */
+  --color-accent: #0b4f8c;
+  --color-accent-hover: #07345e;
+  --color-accent-subtle: #eef4fb;
+  --color-accent-border: #cbdff4;
+
+  --color-focus: #0b4f8c;
+
   --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --max-width: 720px;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+  --max-width: 1080px;
 }
 
 html {
@@ -23,6 +38,7 @@ html {
   color: var(--color-text-primary);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -31,26 +47,53 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Skip to content link for accessibility */
+.skip-link {
+  position: absolute;
+  top: -999px;
+  left: 1.5rem;
+  background: var(--color-accent);
+  color: #ffffff;
+  padding: 0.75rem 1.25rem;
+  z-index: 1000;
+  border-radius: 4px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 12px rgba(18, 25, 38, 0.15);
+}
+
+.skip-link:focus {
+  top: 1.5rem;
+  outline: 3px solid #ffffff;
+  outline-offset: 2px;
 }
 
 a {
-  color: var(--color-link);
-  text-decoration: underline;
+  color: var(--color-accent);
+  text-decoration-thickness: 1px;
   text-underline-offset: 3px;
+  transition: color 0.15s ease;
 }
 
 a:hover {
-  color: var(--color-link-hover);
+  color: var(--color-accent-hover);
 }
 
 a:focus-visible,
 button:focus-visible {
   outline: 2px solid var(--color-focus);
   outline-offset: 3px;
-  border-radius: 2px;
+  border-radius: 4px;
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
   *,
   *::before,
   *::after {
@@ -60,4 +103,3 @@ button:focus-visible {
     scroll-behavior: auto !important;
   }
 }
-
