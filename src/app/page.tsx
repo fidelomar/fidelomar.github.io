@@ -1,8 +1,23 @@
 import styles from "./page.module.css";
 import { contentData } from "../content/profile";
+import { AppIcon, IconName } from "../components/AppIcon";
+
+const aiStepIcons: IconName[] = [
+  "search-code",
+  "terminal",
+  "checklist",
+  "shield-check",
+];
+
+const caseSectorIcons: Record<string, { icon: IconName; type: string }> = {
+  "og-engine": { icon: "nodes", type: "tools" },
+  "integracion-ecommerce-erp": { icon: "box", type: "ecommerce" },
+  "apis-atencion-telefonica": { icon: "phone-waves", type: "telephony" },
+  "apps-moviles-campo": { icon: "phone-leaf", type: "mobile" },
+};
 
 export default function Home() {
-  const { profile, capabilities, experience, caseStudies, professionalLinks } = contentData;
+  const { profile, capabilities, aiWorkflow, experience, caseStudies, professionalLinks } = contentData;
 
   return (
     <div className={styles.siteWrapper}>
@@ -19,6 +34,12 @@ export default function Home() {
           <nav className={styles.siteNav} aria-label="Navegación principal">
             <a href="#perfil" className={styles.navLink}>
               Perfil
+            </a>
+            <a href="#capacidades" className={styles.navLink}>
+              Capacidades
+            </a>
+            <a href="#metodologia-ia" className={styles.navLink}>
+              Metodología IA
             </a>
             <a href="#experiencia" className={styles.navLink}>
               Experiencia
@@ -51,8 +72,8 @@ export default function Home() {
                 {profile.availability}
               </p>
               <div className={styles.heroActions}>
-                <a href="#capacidades" className={styles.primaryButton}>
-                  Ver capacidades técnicas
+                <a href="#metodologia-ia" className={styles.primaryButton}>
+                  Enfoque asistido por IA
                 </a>
                 <a
                   href={professionalLinks[0].url}
@@ -112,7 +133,7 @@ export default function Home() {
                 Capacidades técnicas
               </h2>
               <p className={styles.sectionDescription}>
-                Áreas de práctica aplicadas al desarrollo y mantenimiento de software empresarial.
+                Áreas de práctica aplicadas al desarrollo, modernización y soporte de software empresarial.
               </p>
             </div>
 
@@ -128,6 +149,78 @@ export default function Home() {
                   <p className={styles.cardBody}>{cap.description}</p>
                 </article>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 4.5. Sección de Metodología de IA con Supervisión Humana */}
+        <section
+          id="metodologia-ia"
+          className={`${styles.sectionBand} ${styles.aiSectionBand}`}
+          aria-labelledby="ia-heading"
+        >
+          <div className={styles.sectionInner}>
+            <div className={styles.sectionHeader}>
+              <span className={styles.sectionLabel}>Productividad y rigor</span>
+              <h2 id="ia-heading" className={styles.sectionTitle}>
+                {aiWorkflow.title}
+              </h2>
+              <p className={styles.sectionDescription}>
+                {aiWorkflow.lead}
+              </p>
+            </div>
+
+            <div className={styles.aiContainer}>
+              <div className={styles.aiToolsContainer}>
+                <span className={styles.aiToolsLabel}>Agentes y herramientas clave:</span>
+                <ul className={styles.aiToolsList}>
+                  {aiWorkflow.tools.map((tool) => (
+                    <li key={tool} className={styles.aiToolBadge}>
+                      {tool}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className={styles.aiCallout}>
+                <span className={styles.aiCalloutIcon} aria-hidden="true">
+                  Criterio
+                </span>
+                <p className={styles.aiCalloutText}>
+                  {aiWorkflow.humanSupervisionNote}
+                </p>
+              </div>
+
+              <div className={styles.aiStepsFlow}>
+                {aiWorkflow.steps.map((step, idx) => {
+                  const stepNumber = String(idx + 1).padStart(2, "0");
+                  const iconName = aiStepIcons[idx] || "terminal";
+                  const isLast = idx === aiWorkflow.steps.length - 1;
+
+                  return (
+                    <article
+                      key={step.title}
+                      className={`${styles.aiStepCard} ${isLast ? styles.aiStepCardFeatured : ""}`}
+                    >
+                      <div className={styles.aiStepHeader}>
+                        <span
+                          className={styles.aiStepIndex}
+                          aria-label={`Paso ${stepNumber}`}
+                        >
+                          Paso {stepNumber}
+                        </span>
+                        <span className={styles.aiStepIconWrapper} aria-hidden="true">
+                          <AppIcon name={iconName} size={22} />
+                        </span>
+                      </div>
+                      <div className={styles.aiStepBody}>
+                        <h3 className={styles.aiStepTitle}>{step.title}</h3>
+                        <p className={styles.aiStepDescription}>{step.description}</p>
+                      </div>
+                    </article>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </section>
@@ -193,42 +286,58 @@ export default function Home() {
             </div>
 
             <div className={styles.caseStudiesGrid}>
-              {caseStudies.map((study) => (
-                <article key={study.id} className={styles.caseCard}>
-                  <div className={styles.caseHeader}>
-                    <span className={styles.caseSector}>{study.sector}</span>
-                    <h3 className={styles.caseTitle}>{study.title}</h3>
-                  </div>
+              {caseStudies.map((study) => {
+                const sectorConfig = caseSectorIcons[study.id] || { icon: "nodes", type: "tools" };
 
-                  <div className={styles.caseContent}>
-                    <div className={styles.caseField}>
-                      <span className={styles.caseLabel}>Desafío</span>
-                      <p className={styles.caseText}>{study.challenge}</p>
+                return (
+                  <article
+                    key={study.id}
+                    className={styles.caseCard}
+                    data-sector={sectorConfig.type}
+                  >
+                    <div className={styles.caseHeader}>
+                      <div className={styles.caseHeaderTop}>
+                        <div className={styles.caseHeaderMeta}>
+                          <span className={styles.caseIconBadge} aria-hidden="true">
+                            <AppIcon name={sectorConfig.icon} size={20} />
+                          </span>
+                          <span className={styles.caseSector}>{study.sector}</span>
+                        </div>
+                        {study.badge && <span className={styles.caseBadge}>{study.badge}</span>}
+                      </div>
+                      <h3 className={styles.caseTitle}>{study.title}</h3>
                     </div>
 
-                    <div className={styles.caseField}>
-                      <span className={styles.caseLabel}>Responsabilidad</span>
-                      <p className={styles.caseText}>{study.responsibility}</p>
+                    <div className={styles.caseContent}>
+                      <div className={styles.caseField}>
+                        <span className={styles.caseLabel}>Desafío</span>
+                        <p className={styles.caseText}>{study.challenge}</p>
+                      </div>
+
+                      <div className={styles.caseField}>
+                        <span className={styles.caseLabel}>Responsabilidad</span>
+                        <p className={styles.caseText}>{study.responsibility}</p>
+                      </div>
+
+                      <div className={styles.caseField}>
+                        <span className={styles.caseLabel}>Resultado</span>
+                        <p className={styles.caseText}>{study.result}</p>
+                      </div>
                     </div>
 
-                    <div className={styles.caseField}>
-                      <span className={styles.caseLabel}>Resultado</span>
-                      <p className={styles.caseText}>{study.result}</p>
-                    </div>
-                  </div>
-
-                  <footer className={styles.caseFooter}>
-                    <span className={styles.caseTechLabel}>Tecnologías:</span>
-                    <ul className={styles.techTagList}>
-                      {study.technologies.map((tech) => (
-                        <li key={tech} className={styles.techTag}>
-                          {tech}
-                        </li>
-                      ))}
-                    </ul>
-                  </footer>
-                </article>
-              ))}
+                    <footer className={styles.caseFooter}>
+                      <span className={styles.caseTechLabel}>Tecnologías:</span>
+                      <ul className={styles.techTagList}>
+                        {study.technologies.map((tech) => (
+                          <li key={tech} className={styles.techTag}>
+                            {tech}
+                          </li>
+                        ))}
+                      </ul>
+                    </footer>
+                  </article>
+                );
+              })}
             </div>
           </div>
         </section>
