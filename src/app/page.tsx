@@ -3,14 +3,13 @@ import { contentData } from "../content/profile";
 import { AppIcon, IconName } from "../components/AppIcon";
 
 const aiStepIcons: IconName[] = [
-  "search-code",
+  "requirements",
   "terminal",
   "checklist",
   "shield-check",
 ];
 
 const caseSectorIcons: Record<string, { icon: IconName; type: string }> = {
-  "og-engine": { icon: "nodes", type: "tools" },
   "integracion-ecommerce-erp": { icon: "box", type: "ecommerce" },
   "apis-atencion-telefonica": { icon: "phone-waves", type: "telephony" },
   "apps-moviles-campo": { icon: "phone-leaf", type: "mobile" },

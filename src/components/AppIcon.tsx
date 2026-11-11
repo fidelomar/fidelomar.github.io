@@ -1,7 +1,7 @@
 import React from "react";
 
 export type IconName =
-  | "search-code"
+  | "requirements"
   | "terminal"
   | "checklist"
   | "shield-check"
@@ -33,14 +33,13 @@ export function AppIcon({ name, size = 24, className, ...rest }: IconProps) {
   };
 
   switch (name) {
-    /* 1. Metodología IA: Análisis de código heredado (lupa + código) */
-    case "search-code":
+    /* 1. Metodología IA: comprensión de una necesidad humana y análisis técnico */
+    case "requirements":
       return (
         <svg {...commonProps}>
-          <circle cx="11" cy="11" r="7" />
-          <path d="M21 21l-4.35-4.35" />
-          <path d="M9 9.5L7.5 11l1.5 1.5" />
-          <path d="M13 9.5l1.5 1.5-1.5 1.5" />
+          <path d="M21 15a4 4 0 0 1-4 4H9l-5 3v-7a4 4 0 0 1-1-2.7V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z" />
+          <path d="M8 8h8" />
+          <path d="M8 12h5" />
         </svg>
       );
 

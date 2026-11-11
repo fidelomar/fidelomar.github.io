@@ -100,7 +100,7 @@ export const contentData: ContentData = {
       number: "02",
       title: "Bases de datos",
       description:
-        "SQL Server, procedimientos almacenados y optimización de consultas en esquemas transaccionales de alta exigencia.",
+        "SQL Server, procedimientos almacenados y mantenimiento de procesos de consulta y actualización de información empresarial.",
     },
     {
       id: "apis",
@@ -121,34 +121,34 @@ export const contentData: ContentData = {
       number: "05",
       title: "Desarrollo asistido por IA",
       description:
-        "Adopción de agentes de IA para comprensión de código legado, generación de pruebas y refactorización, con revisión humana en cada etapa.",
+        "Metodología propia para analizar necesidades, diseñar microtareas, coordinar agentes y validar cada cambio antes de integrarlo.",
     },
   ],
   aiWorkflow: {
-    title: "Desarrollo asistido por IA bajo supervisión humana",
-    lead: "Integro agentes de IA de última generación como multiplicadores de productividad, manteniendo el control arquitectónico, la verificación de seguridad y la responsabilidad técnica en manos humanas.",
-    tools: ["Claude", "Codex", "GitHub Copilot", "OG Engine"],
-    humanSupervisionNote: "Principio no negociable: la IA propone y acelera; el criterio de ingeniería humano analiza el contexto de negocio, audita cada línea, previene regresiones y valida la solución en producción.",
+    title: "Metodología de desarrollo asistido por IA",
+    lead: "He incorporado agentes de IA a un marco de trabajo estructurado que parte de una necesidad humana y termina con software revisado y validado. La IA acelera la ejecución; el análisis, las decisiones técnicas y la aceptación del resultado permanecen bajo supervisión humana.",
+    tools: ["ChatGPT", "Claude", "Gemini", "Antigravity", "Jules", "OG Engine"],
+    humanSupervisionNote: "No delego el criterio de ingeniería: defino el alcance, organizo el trabajo, reviso los cambios y valido el resultado antes de avanzar a la siguiente tarea.",
     steps: [
       {
-        title: "Análisis de código heredado",
+        title: "Comprensión y análisis",
         description:
-          "Exploración asistida de sistemas complejos sin documentación para mapear reglas de negocio, dependencias ocultas y flujos de datos antes de intervenir.",
+          "Traduzco una necesidad, incidencia o mejora en un objetivo técnico claro. Reviso el código involucrado, dependencias, impacto, migraciones necesarias y alternativas de solución.",
       },
       {
-        title: "Especificación e implementación",
+        title: "Diseño y microtareas",
         description:
-          "Estructuración de requerimientos en especificaciones atómicas que guían a los modelos de código, reduciendo alucinaciones y acelerando la implementación.",
+          "Organizo la solución en historias de usuario y tareas pequeñas, verificables y con alcance definido, aplicando prácticas de desarrollo y elementos de Scrum.",
       },
       {
-        title: "Documentación y casos de prueba",
+        title: "Ejecución asistida",
         description:
-          "Generación sistemática de cobertura de pruebas unitarias, documentación técnica de arquitectura y contratos de APIs para robustecer el mantenimiento.",
+          "Coordino las microtareas mediante OG Engine y agentes de programación, proporcionando el contexto y los criterios necesarios para ejecutar cada cambio de forma controlada.",
       },
       {
-        title: "Auditoría y validación humana",
+        title: "Auditoría y validación",
         description:
-          "Revisión minuciosa de cada cambio: seguridad, estilo, rendimiento en base de datos y apego a las políticas operativas del negocio antes del commit.",
+          "Reviso el commit, ejecuto pruebas unitarias y compilación local, y valido el comportamiento en el navegador. Solo después de aprobar el resultado continúo con la siguiente tarea.",
       },
     ],
   },
@@ -162,7 +162,6 @@ export const contentData: ContentData = {
       responsibilities: [
         "Mantenimiento de sistemas en VB.NET, ASP.NET Web Forms, PHP/Laravel y SQL Server.",
         "Integraciones empresariales desarrolladas con .NET.",
-        "Desarrollo de herramientas de soporte como OG Engine para orquestación de tareas en paralelo.",
         "Aplicaciones web con Node.js y React.",
         "Modernización de aplicaciones móviles hacia .NET MAUI.",
       ],
@@ -178,7 +177,7 @@ export const contentData: ContentData = {
       responsibilities: [
         "Desarrollo y mantenimiento de sistemas empresariales en C#, ASP.NET MVC y Web Forms.",
         "Construcción y mantenimiento de APIs REST con .NET y SQL Server.",
-        "Integraciones con sistemas de atención telefónica (IVR) con alto volumen de consultas simultáneas.",
+        "Integraciones con sistemas de atención telefónica.",
         "Procesos de backend para registro de usuarios y códigos de verificación OTP.",
         "Trabajo remoto con un equipo Scrum y seguimiento mediante Jira.",
       ],
@@ -228,26 +227,13 @@ export const contentData: ContentData = {
   ],
   caseStudies: [
     {
-      id: "og-engine",
-      title: "OG Engine: Orquestador de tareas atómicas para agentes de programación",
-      sector: "Herramientas de ingeniería y productividad de software",
-      badge: "Herramienta propia",
-      challenge:
-        "Gestionar el flujo de trabajo con agentes de IA autónomos de forma ordenada y predecible, evitando sobrecarga de contexto, pérdida de foco o modificaciones no controladas al código fuente.",
-      responsibility:
-        "Diseño de arquitectura y desarrollo completo de una solución en Node.js y MongoDB que descompone requerimientos complejos en tareas atómicas estructuradas, entregándolas secuencialmente al agente de codificación y registrando el resultado para auditoría humana.",
-      technologies: ["Node.js", "MongoDB", "Agentes de IA", "Orquestación", "Git"],
-      result:
-        "Herramienta propia en producción que permite avanzar múltiples proyectos en paralelo de forma disciplinada, con trazabilidad completa de cada cambio y validación humana continua.",
-    },
-    {
       id: "integracion-ecommerce-erp",
       title: "Integración de comercio electrónico con ERP",
       sector: "Comercio electrónico y distribución",
       challenge:
-        "Registrar pedidos y mantener existencias consistentes en tiempo real entre múltiples canales de venta y el sistema empresarial central.",
+        "Registrar pedidos y mantener existencias consistentes entre canales de venta y el sistema empresarial central.",
       responsibility:
-        "Desarrollo de un servicio en .NET para intercambiar órdenes e inventario entre plataformas, asegurando idempotencia y manejo de errores transaccionales.",
+        "Desarrollo de un servicio en .NET para intercambiar órdenes e inventario entre las plataformas.",
       technologies: [".NET", "APIs REST", "Azure", "Shopify", "Mercado Libre", "SAP"],
       result:
         "Servicio publicado en Azure para registrar órdenes de venta y actualizar existencias de manera fiable y automatizada entre las plataformas integradas.",
@@ -257,24 +243,24 @@ export const contentData: ContentData = {
       title: "APIs para atención telefónica automatizada",
       sector: "Medios de pago y servicios financieros",
       challenge:
-        "Permitir que un sistema telefónico automatizado (IVR) consultara saldos e información de clientes con alta concurrencia y tiempos de respuesta mínimos.",
+        "Permitir que un sistema telefónico automatizado consultara saldos e información solicitada por clientes.",
       responsibility:
-        "Desarrollo de APIs de integración entre el conmutador interactivo (IVR) y la plataforma central de servicios financieros.",
+        "Desarrollo de APIs de integración entre el IVR y la plataforma del centro de llamadas.",
       technologies: ["C#", ".NET", "SQL Server", "APIs REST"],
       result:
-        "APIs robustas en producción capaces de soportar un alto volumen simultáneo de consultas de clientes con disponibilidad continua.",
+        "APIs utilizadas para consultar saldos e información solicitada mediante la línea telefónica automatizada.",
     },
     {
       id: "apps-moviles-campo",
       title: "Aplicaciones móviles para personal de campo",
       sector: "Agricultura y nutrición vegetal",
       challenge:
-        "Convertir complejas calculadoras especializadas creadas en hojas de cálculo en aplicaciones móviles intuitivas para ingenieros en campo.",
+        "Convertir calculadoras especializadas creadas en Excel en herramientas móviles para uso en campo.",
       responsibility:
         "Desarrollo y publicación de aplicaciones móviles para Android e iOS a partir de las fórmulas y reglas agronómicas del negocio.",
       technologies: ["C#", "Xamarin Forms", "Google Play", "App Store"],
       result:
-        "Aplicaciones publicadas en Google Play y App Store utilizadas activamente por el personal técnico en campo para la toma de decisiones agrícolas.",
+        "Aplicaciones publicadas en Google Play y App Store para apoyar el trabajo del personal de campo.",
     },
   ],
   professionalLinks: [
