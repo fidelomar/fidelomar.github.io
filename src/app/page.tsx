@@ -54,6 +54,13 @@ const caseSectorIcons: Record<string, { icon: IconName; type: string }> = {
   "apps-moviles-campo": { icon: "phone-leaf", type: "mobile" },
 };
 
+const workflowBannerSteps: { step: string; label: string; icon: IconName }[] = [
+  { step: "01", label: "Comprender", icon: "requirements" },
+  { step: "02", label: "Diseñar", icon: "checklist" },
+  { step: "03", label: "Ejecutar", icon: "terminal" },
+  { step: "04", label: "Validar", icon: "shield-check" },
+];
+
 export default function Home() {
   const { profile, capabilities, aiWorkflow, experience, caseStudies, professionalLinks } = contentData;
 
@@ -208,6 +215,48 @@ export default function Home() {
                 );
               })}
             </div>
+          </div>
+        </section>
+
+        {/* 4.1. Banner de transición: Marco de trabajo */}
+        <section
+          className={styles.transitionBanner}
+          aria-labelledby="banner-marco-heading"
+        >
+          <div className={styles.transitionBannerBackdrop} aria-hidden="true" />
+          <div className={styles.transitionBannerContainer}>
+            <div className={styles.transitionBannerIntro}>
+              <span className={styles.transitionBannerTag}>MARCO DE TRABAJO</span>
+              <h2 id="banner-marco-heading" className={styles.transitionBannerTitle}>
+                De la necesidad humana al cambio validado
+              </h2>
+              <p className={styles.transitionBannerDescription}>
+                Combino análisis técnico, tareas de alcance controlado, ejecución asistida y validación humana antes de integrar cada cambio.
+              </p>
+            </div>
+
+            <ol className={styles.transitionFlowList} aria-label="Flujo de trabajo resumido">
+              {workflowBannerSteps.map((item, index) => (
+                <li key={item.step} className={styles.transitionFlowItem}>
+                  <div className={styles.transitionFlowCard}>
+                    <div className={styles.transitionFlowIconWrapper} aria-hidden="true">
+                      <AppIcon name={item.icon} size={20} />
+                    </div>
+                    <div className={styles.transitionFlowMeta}>
+                      <span className={styles.transitionFlowIndex} aria-hidden="true">
+                        {item.step}
+                      </span>
+                      <span className={styles.transitionFlowLabel}>{item.label}</span>
+                    </div>
+                  </div>
+                  {index < workflowBannerSteps.length - 1 && (
+                    <div className={styles.transitionFlowConnector} aria-hidden="true">
+                      <span className={styles.transitionFlowConnectorLine} />
+                    </div>
+                  )}
+                </li>
+              ))}
+            </ol>
           </div>
         </section>
 
