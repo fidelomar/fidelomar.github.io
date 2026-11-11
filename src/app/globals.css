@@ -58,6 +58,28 @@
   --color-accent-cyan: #38bdf8;         /* Acento sutil sobre fondo oscuro */
   --color-accent-teal-light: #5eead4;    /* Verde azulado sutil sobre fondo oscuro */
 
+  /* Paleta cromática para capacidades técnicas */
+  --color-cap-backend: #0b4f8c;         /* Azul técnico */
+  --color-cap-backend-bg: #eef5fc;      /* Fondo tenue para icono backend */
+  --color-cap-backend-border: #d2e4f7;
+
+  --color-cap-db: #15796e;              /* Turquesa sobrio (WCAG AA contraste > 4.5:1) */
+  --color-cap-db-bg: #edf8f6;           /* Fondo tenue para icono DB */
+  --color-cap-db-border: #c3e9e3;
+
+  --color-cap-api: #3d546e;             /* Azul grisáceo */
+  --color-cap-api-bg: #eff3f7;          /* Fondo tenue para icono APIs */
+  --color-cap-api-border: #d5e0eb;
+
+  --color-cap-modern: #8a5716;          /* Ámbar sobrio (WCAG AA contraste > 5:1) */
+  --color-cap-modern-bg: #fdf6ec;       /* Fondo tenue para icono modernización */
+  --color-cap-modern-border: #fae1c3;
+
+  --color-cap-ai: #0d6878;              /* Combinación azul/turquesa */
+  --color-cap-ai-bg: #eaf6f7;           /* Fondo tenue para icono IA */
+  --color-cap-ai-border: #bce5ea;
+  --color-cap-ai-card-bg: #f8fbfb;      /* Fondo apenas diferenciado para tarjeta IA */
+
   --color-focus: #0b4f8c;
 
   --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;

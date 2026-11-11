@@ -383,10 +383,187 @@
   border-bottom: 1px solid var(--color-border);
 }
 
-.cardsGrid {
+.capabilitiesGrid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.75rem;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1.25rem;
+}
+
+/* Tarjeta base de capacidades: compacta, sobria y accesible */
+.capabilityCard {
+  background-color: var(--color-surface-white);
+  border: 1px solid var(--color-border);
+  border-top: 3px solid var(--color-slate-blue);
+  border-radius: 8px;
+  padding: 1.35rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  box-shadow: 0 1px 3px rgba(18, 25, 38, 0.03);
+  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  grid-column: span 2;
+}
+
+.capabilityCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(18, 25, 38, 0.06);
+}
+
+/* Modificadores de acento cromático superior y hover por categoría */
+.capCardBackend {
+  border-top-color: var(--color-cap-backend);
+}
+.capCardBackend:hover {
+  border-color: var(--color-cap-backend-border);
+  border-top-color: var(--color-cap-backend);
+}
+
+.capCardDatabases {
+  border-top-color: var(--color-cap-db);
+}
+.capCardDatabases:hover {
+  border-color: var(--color-cap-db-border);
+  border-top-color: var(--color-cap-db);
+}
+
+.capCardApis {
+  border-top-color: var(--color-cap-api);
+}
+.capCardApis:hover {
+  border-color: var(--color-cap-api-border);
+  border-top-color: var(--color-cap-api);
+}
+
+.capCardModernization {
+  border-top-color: var(--color-cap-modern);
+}
+.capCardModernization:hover {
+  border-color: var(--color-cap-modern-border);
+  border-top-color: var(--color-cap-modern);
+}
+
+.capCardAi {
+  border-top-color: var(--color-cap-ai);
+}
+.capCardAi:hover {
+  border-color: var(--color-cap-ai-border);
+  border-top-color: var(--color-cap-ai);
+}
+
+/* Fila 2 de la cuadrícula en escritorio (3 columnas base, 6 spans):
+   Modernización toma 3 spans y Desarrollo asistido por IA toma 3 spans para composición balanceada */
+.capabilityCard:nth-child(4) {
+  grid-column: span 3;
+}
+
+.capabilityCard:nth-child(5) {
+  grid-column: span 3;
+}
+
+/* Tarjeta destacada de IA: borde superior turquesa/azul, fondo apenas diferenciado */
+.capabilityCardFeatured {
+  background-color: var(--color-cap-ai-card-bg);
+  border-color: var(--color-cap-ai-border);
+  border-top: 3px solid var(--color-cap-ai);
+}
+
+/* Encabezado superior de tarjeta: icono a la izquierda, número y tag a la derecha */
+.capabilityTopRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+/* Contenedor del icono distintivo con fondos muy tenues asociados a la categoría */
+.capabilityIconWrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  flex-shrink: 0;
+  transition: transform 0.15s ease;
+}
+
+.capIconBackend {
+  color: var(--color-cap-backend);
+  background-color: var(--color-cap-backend-bg);
+  border: 1px solid var(--color-cap-backend-border);
+}
+
+.capIconDatabases {
+  color: var(--color-cap-db);
+  background-color: var(--color-cap-db-bg);
+  border: 1px solid var(--color-cap-db-border);
+}
+
+.capIconApis {
+  color: var(--color-cap-api);
+  background-color: var(--color-cap-api-bg);
+  border: 1px solid var(--color-cap-api-border);
+}
+
+.capIconModernization {
+  color: var(--color-cap-modern);
+  background-color: var(--color-cap-modern-bg);
+  border: 1px solid var(--color-cap-modern-border);
+}
+
+.capIconAi {
+  color: var(--color-cap-ai);
+  background-color: var(--color-cap-ai-bg);
+  border: 1px solid var(--color-cap-ai-border);
+}
+
+.capabilityMetaWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.capabilityTag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-cap-ai);
+  background-color: var(--color-cap-ai-bg);
+  border: 1px solid var(--color-cap-ai-border);
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.capabilityNumber {
+  font-family: var(--font-mono);
+  font-size: 0.825rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+}
+
+/* Jerarquía de contenido interna */
+.capabilityContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.capabilityTitle {
+  margin: 0;
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: var(--color-ink-dark);
+  line-height: 1.35;
+}
+
+.capabilityDescription {
+  margin: 0;
+  font-size: 0.915rem;
+  line-height: 1.55;
+  color: var(--color-text-secondary);
 }
 
 /* Sección específica de Desarrollo Asistido por IA */
@@ -621,52 +798,6 @@
   margin: 0;
   font-size: 0.9rem;
   line-height: 1.55;
-  color: var(--color-text-secondary);
-}
-
-.card {
-  background-color: var(--color-surface-white);
-  border: 1px solid var(--color-border);
-  border-top: 3px solid var(--color-slate-blue);
-  border-radius: 8px;
-  padding: 1.85rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  box-shadow: 0 1px 3px rgba(18, 25, 38, 0.03);
-  transition: border-color 0.15s ease, background-color 0.15s ease;
-}
-
-.card:hover {
-  background-color: #fafbfc;
-  border-color: var(--color-accent-border);
-  border-top-color: var(--color-tech-blue);
-}
-
-.cardHeader {
-  display: flex;
-  align-items: baseline;
-  gap: 0.75rem;
-}
-
-.cardIndex {
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--color-tech-blue);
-}
-
-.cardTitle {
-  margin: 0;
-  font-size: 1.18rem;
-  font-weight: 700;
-  color: var(--color-ink-dark);
-}
-
-.cardBody {
-  margin: 0;
-  font-size: 0.95rem;
-  line-height: 1.58;
   color: var(--color-text-secondary);
 }
 
@@ -1151,6 +1282,22 @@
 
 /* Breakpoints Responsive */
 @media (max-width: 1024px) {
+  .capabilitiesGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .capabilityCard,
+  .capabilityCard:nth-child(4),
+  .capabilityCard:nth-child(5) {
+    grid-column: span 1;
+  }
+
+  /* La tarjeta de IA en tableta puede abarcar 2 columnas para un balance armónico */
+  .capabilityCard:nth-child(5) {
+    grid-column: span 2;
+  }
+
   .aiStepsFlow {
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
@@ -1171,16 +1318,27 @@
     font-size: 2.25rem;
   }
 
-  .cardsGrid {
-    grid-template-columns: 1fr;
-  }
-
   .caseStudiesGrid {
     grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 640px) {
+  .capabilitiesGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .capabilityCard,
+  .capabilityCard:nth-child(4),
+  .capabilityCard:nth-child(5) {
+    grid-column: span 1;
+  }
+
+  .capabilityCard {
+    padding: 1.15rem 1rem;
+  }
+
   /* En móvil el encabezado pasa a static para no obstaculizar la vista ni el scroll */
   .siteHeader {
     position: static;
@@ -1244,10 +1402,6 @@
   }
 
   .profileCard {
-    padding: 1.5rem;
-  }
-
-  .card {
     padding: 1.5rem;
   }
 

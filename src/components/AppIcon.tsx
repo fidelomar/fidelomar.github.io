@@ -8,7 +8,11 @@ export type IconName =
   | "nodes"
   | "box"
   | "phone-waves"
-  | "phone-leaf";
+  | "phone-leaf"
+  | "code"
+  | "database"
+  | "layers"
+  | "bot";
 
 export interface IconProps extends React.SVGProps<SVGSVGElement> {
   name: IconName;
@@ -114,6 +118,49 @@ export function AppIcon({ name, size = 24, className, ...rest }: IconProps) {
           <line x1="8" y1="18" x2="10" y2="18" />
           <path d="M15 8c2.5 0 5 1.5 5 4.5 0 2-1.5 3.5-3.5 3.5H15V8z" />
           <path d="M15 16c1-2 2-4.5 4-5" />
+        </svg>
+      );
+
+    /* 9. Capacidades: Desarrollo backend (código / terminal de desarrollo) */
+    case "code":
+      return (
+        <svg {...commonProps}>
+          <polyline points="16 18 22 12 16 6" />
+          <polyline points="8 6 2 12 8 18" />
+          <line x1="14" y1="4" x2="10" y2="20" />
+        </svg>
+      );
+
+    /* 10. Capacidades: Bases de datos (cilindro de datos estructurado) */
+    case "database":
+      return (
+        <svg {...commonProps}>
+          <ellipse cx="12" cy="5" rx="9" ry="3" />
+          <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
+          <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+        </svg>
+      );
+
+    /* 11. Capacidades: Modernización y mantenimiento (capas de arquitectura y evolución) */
+    case "layers":
+      return (
+        <svg {...commonProps}>
+          <polygon points="12 2 2 7 12 12 22 7 12 2" />
+          <polyline points="2 17 12 22 22 17" />
+          <polyline points="2 12 12 17 22 12" />
+        </svg>
+      );
+
+    /* 12. Capacidades: Desarrollo asistido por IA (agente inteligente / flujo asistido) */
+    case "bot":
+      return (
+        <svg {...commonProps}>
+          <rect x="3" y="11" width="18" height="10" rx="2" />
+          <circle cx="12" cy="5" r="2" />
+          <path d="M12 7v4" />
+          <line x1="8" y1="16" x2="8.01" y2="16" strokeWidth={2.5} />
+          <line x1="16" y1="16" x2="16.01" y2="16" strokeWidth={2.5} />
+          <path d="M9 19c1 .6 2 .6 3 .6s2 0 3-.6" />
         </svg>
       );
 

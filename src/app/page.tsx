@@ -2,6 +2,45 @@ import styles from "./page.module.css";
 import { contentData } from "../content/profile";
 import { AppIcon, IconName } from "../components/AppIcon";
 
+const capabilityMeta: Record<
+  string,
+  {
+    icon: IconName;
+    cardModifier: string;
+    iconModifier: string;
+    isFeatured?: boolean;
+    tag?: string;
+  }
+> = {
+  backend: {
+    icon: "code",
+    cardModifier: styles.capCardBackend,
+    iconModifier: styles.capIconBackend,
+  },
+  databases: {
+    icon: "database",
+    cardModifier: styles.capCardDatabases,
+    iconModifier: styles.capIconDatabases,
+  },
+  apis: {
+    icon: "nodes",
+    cardModifier: styles.capCardApis,
+    iconModifier: styles.capIconApis,
+  },
+  modernization: {
+    icon: "layers",
+    cardModifier: styles.capCardModernization,
+    iconModifier: styles.capIconModernization,
+  },
+  "ai-assisted": {
+    icon: "bot",
+    cardModifier: styles.capCardAi,
+    iconModifier: styles.capIconAi,
+    isFeatured: true,
+    tag: "Metodología propia",
+  },
+};
+
 const aiStepIcons: IconName[] = [
   "requirements",
   "terminal",
@@ -136,18 +175,38 @@ export default function Home() {
               </p>
             </div>
 
-            <div className={styles.cardsGrid}>
-              {capabilities.map((cap) => (
-                <article key={cap.id} className={styles.card}>
-                  <div className={styles.cardHeader}>
-                    <span className={styles.cardIndex} aria-hidden="true">
-                      {cap.number}
-                    </span>
-                    <h3 className={styles.cardTitle}>{cap.title}</h3>
-                  </div>
-                  <p className={styles.cardBody}>{cap.description}</p>
-                </article>
-              ))}
+            <div className={styles.capabilitiesGrid}>
+              {capabilities.map((cap) => {
+                const meta = capabilityMeta[cap.id];
+                return (
+                  <article
+                    key={cap.id}
+                    className={`${styles.capabilityCard} ${meta?.cardModifier || ""} ${
+                      meta?.isFeatured ? styles.capabilityCardFeatured : ""
+                    }`}
+                  >
+                    <div className={styles.capabilityTopRow}>
+                      <div
+                        className={`${styles.capabilityIconWrapper} ${meta?.iconModifier || ""}`}
+                      >
+                        <AppIcon name={meta?.icon || "code"} size={20} />
+                      </div>
+                      <div className={styles.capabilityMetaWrapper}>
+                        {meta?.tag && (
+                          <span className={styles.capabilityTag}>{meta.tag}</span>
+                        )}
+                        <span className={styles.capabilityNumber} aria-hidden="true">
+                          {cap.number}
+                        </span>
+                      </div>
+                    </div>
+                    <div className={styles.capabilityContent}>
+                      <h3 className={styles.capabilityTitle}>{cap.title}</h3>
+                      <p className={styles.capabilityDescription}>{cap.description}</p>
+                    </div>
+                  </article>
+                );
+              })}
             </div>
           </div>
         </section>
