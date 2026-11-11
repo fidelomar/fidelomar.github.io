@@ -1,0 +1,60 @@
+export const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfilePage",
+      "@id": "https://fidelomar.github.io/#profilepage",
+      "url": "https://fidelomar.github.io/",
+      "name": "Fidel Omar García | Ingeniero de Software",
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://fidelomar.github.io/#website",
+        "url": "https://fidelomar.github.io/",
+        "name": "Fidel Omar García",
+        "description":
+          "Sitio profesional de Fidel Omar García. Ingeniero de software especializado en .NET, SQL Server, APIs e integraciones empresariales.",
+        "inLanguage": "es-MX",
+      },
+      "mainEntity": {
+        "@id": "https://fidelomar.github.io/#person",
+      },
+    },
+    {
+      "@type": "Person",
+      "@id": "https://fidelomar.github.io/#person",
+      "name": "Fidel Omar García",
+      "jobTitle": "Ingeniero de software",
+      "description":
+        "Ingeniero de software especializado en .NET, SQL Server, APIs e integraciones empresariales.",
+      "url": "https://fidelomar.github.io/",
+      "sameAs": [
+        "https://www.linkedin.com/in/fidelomar",
+        "https://github.com/fidelomar",
+      ],
+      "knowsAbout": [
+        "C#",
+        ".NET",
+        ".NET Framework",
+        ".NET Core",
+        "ASP.NET MVC",
+        "ASP.NET Core",
+        "ASP.NET Web Forms",
+        "Entity Framework",
+        "LINQ",
+        "SQL Server",
+        "APIs REST",
+        "Integraciones empresariales",
+        "Modernización de aplicaciones",
+        ".NET MAUI",
+        "Xamarin Forms",
+        "PHP",
+        "Laravel",
+        "JavaScript",
+        "Node.js",
+        "React",
+        "Scrum",
+        "Desarrollo asistido por IA",
+      ],
+    },
+  ],
+};
