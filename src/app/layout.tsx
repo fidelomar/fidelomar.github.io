@@ -2,6 +2,14 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { jsonLd } from "../content/structured-data";
 
+const ogImage = {
+  url: "/og-image.png",
+  width: 1200,
+  height: 630,
+  type: "image/png",
+  alt: "Fidel Omar García - Ingeniero de Software | .NET, SQL Server, APIs e Integraciones",
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://fidelomar.github.io/"),
   title: "Fidel Omar García | Ingeniero de Software",
@@ -23,9 +31,11 @@ export const metadata: Metadata = {
     siteName: "Fidel Omar García",
     locale: "es_MX",
     type: "profile",
+    images: [ogImage],
   },
   twitter: {
     card: "summary_large_image",
+    images: [ogImage],
     title: "Fidel Omar García | Ingeniero de Software",
     description:
       "Sitio profesional de Fidel Omar García. Ingeniero de software especializado en .NET, SQL Server, APIs e integraciones empresariales.",

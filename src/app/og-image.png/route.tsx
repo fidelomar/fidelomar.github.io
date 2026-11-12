@@ -2,15 +2,13 @@ import { ImageResponse } from "next/og";
 
 export const dynamic = "force-static";
 
-export const size = {
+// Se publica como /og-image.png para que GitHub Pages lo sirva con tipo image/png.
+const size = {
   width: 1200,
   height: 630,
 };
-export const contentType = "image/png";
-export const alt =
-  "Fidel Omar García - Ingeniero de Software | .NET, SQL Server, APIs e Integraciones";
 
-export default function Image() {
+export function GET() {
   return new ImageResponse(
     (
       <div
