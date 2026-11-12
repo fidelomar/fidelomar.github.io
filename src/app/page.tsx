@@ -452,9 +452,6 @@ export default function Home() {
                         <header className={styles.caseHeader}>
                           <div className={styles.caseHeaderMeta}>
                             <span className={styles.caseSector}>{study.sector}</span>
-                            <span className={styles.caseMobileIdentifier} aria-hidden="true">
-                              Caso {caseNumber}
-                            </span>
                           </div>
                           <h3 className={styles.caseTitle}>{study.title}</h3>
                         </header>

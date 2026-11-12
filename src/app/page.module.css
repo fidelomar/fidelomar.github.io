@@ -1245,19 +1245,6 @@
   letter-spacing: 0.04em;
 }
 
-/* Identificador visible en móvil cuando la columna lateral se transforma */
-.caseMobileIdentifier {
-  display: none;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--color-text-secondary);
-  background-color: var(--color-surface-subtle);
-  border: 1px solid var(--color-border);
-  padding: 0.15rem 0.5rem;
-  border-radius: 4px;
-}
-
 .caseTitle {
   margin: 0;
   font-size: 1.28rem;
@@ -1559,6 +1546,52 @@
 }
 
 @media (max-width: 900px) {
+  /* En tablets y pantallas medianas (< 900px) el encabezado activa el diseño compacto y estático */
+  .siteHeader {
+    position: static;
+  }
+
+  .headerContainer {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0.75rem 1rem;
+    gap: 0.65rem;
+  }
+
+  .brand {
+    justify-content: flex-start;
+    min-height: 44px;
+  }
+
+  /* Navegación en cuadrícula compacta de 2 columnas */
+  .siteNav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.4rem;
+    width: 100%;
+  }
+
+  .navLink {
+    min-height: 44px;
+    padding: 0.5rem 0.65rem;
+    background-color: var(--color-surface-subtle);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    justify-content: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .navLink:hover {
+    background-color: var(--color-accent-subtle);
+  }
+
+  /* Compensación de scroll para anclas sin header sticky */
+  .heroSection,
+  .sectionBand {
+    scroll-margin-top: 16px;
+  }
+
   .heroContainer {
     grid-template-columns: 1fr;
     gap: 2.5rem;
@@ -1622,52 +1655,6 @@
 
   .capabilityCard {
     padding: 1.15rem 1rem;
-  }
-
-  /* En móvil el encabezado pasa a static para no obstaculizar la vista ni el scroll */
-  .siteHeader {
-    position: static;
-  }
-
-  /* El scroll-margin-top se reduce en móvil al no haber header sticky */
-  .heroSection,
-  .sectionBand {
-    scroll-margin-top: 16px;
-  }
-
-  .headerContainer {
-    flex-direction: column;
-    align-items: stretch;
-    padding: 0.75rem 1rem;
-    gap: 0.65rem;
-  }
-
-  .brand {
-    justify-content: flex-start;
-    min-height: 44px;
-  }
-
-  /* Navegación en cuadrícula compacta 2x2 */
-  .siteNav {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.4rem;
-    width: 100%;
-  }
-
-  .navLink {
-    min-height: 44px;
-    padding: 0.5rem 0.65rem;
-    background-color: var(--color-surface-subtle);
-    border: 1px solid var(--color-border);
-    border-radius: 6px;
-    justify-content: center;
-    font-size: 0.9rem;
-    font-weight: 600;
-  }
-
-  .navLink:hover {
-    background-color: var(--color-accent-subtle);
   }
 
   .heroSection {
@@ -1770,10 +1757,6 @@
 
   .caseVisualNumber {
     font-size: 0.8rem;
-  }
-
-  .caseMobileIdentifier {
-    display: none;
   }
 
   .caseMain {
