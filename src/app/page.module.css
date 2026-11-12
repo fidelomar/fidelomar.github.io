@@ -1419,6 +1419,11 @@
   border-color: var(--color-accent-cyan);
 }
 
+/* Foco visible sobre fondo oscuro (contraste >= 3:1, WCAG 2.1 AA) */
+.contactLink:focus-visible {
+  outline-color: var(--color-accent-cyan);
+}
+
 .contactLinkLabel {
   font-size: 1.05rem;
   font-weight: 700;
