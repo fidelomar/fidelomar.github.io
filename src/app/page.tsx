@@ -1,6 +1,7 @@
 import styles from "./page.module.css";
 import { contentData } from "../content/profile";
 import { AppIcon, IconName } from "../components/AppIcon";
+import { TechnologyBadge } from "../components/TechnologyBadge";
 
 const capabilityMeta: Record<
   string,
@@ -305,8 +306,8 @@ export default function Home() {
                 <span className={styles.aiToolsLabel}>Agentes y herramientas clave:</span>
                 <ul className={styles.aiToolsList}>
                   {aiWorkflow.tools.map((tool) => (
-                    <li key={tool} className={styles.aiToolBadge}>
-                      {tool}
+                    <li key={tool}>
+                      <TechnologyBadge name={tool} category="ai" size="md" />
                     </li>
                   ))}
                 </ul>
@@ -499,8 +500,8 @@ export default function Home() {
                       <span className={styles.caseTechLabel}>Tecnologías:</span>
                       <ul className={styles.techTagList}>
                         {study.technologies.map((tech) => (
-                          <li key={tech} className={styles.techTag}>
-                            {tech}
+                          <li key={tech}>
+                            <TechnologyBadge name={tech} size="sm" />
                           </li>
                         ))}
                       </ul>

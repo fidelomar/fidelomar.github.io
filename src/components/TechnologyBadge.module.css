@@ -1,0 +1,77 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  color: var(--color-ink-dark);
+  background-color: var(--color-surface-white);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  line-height: 1.25;
+  white-space: nowrap;
+  vertical-align: middle;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+/* Tamaños */
+.sizeSm {
+  font-size: 0.75rem;
+  padding: 0.22rem 0.55rem;
+}
+
+.sizeMd {
+  font-size: 0.8rem;
+  padding: 0.35rem 0.7rem;
+  font-weight: 600;
+}
+
+/* Icon container */
+.iconWrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--color-tech-blue);
+  line-height: 1;
+}
+
+.label {
+  display: inline-block;
+  line-height: 1.2;
+}
+
+/* Variantes visuales o categorías opcionales (sutiles y sobrias) */
+.cat_backend {
+  border-color: var(--color-border);
+}
+
+.cat_database {
+  border-color: var(--color-border);
+}
+
+.cat_cloud {
+  border-color: var(--color-border);
+}
+
+.cat_devops {
+  border-color: var(--color-border);
+}
+
+.cat_ecommerce {
+  border-color: var(--color-border);
+}
+
+.cat_mobile {
+  border-color: var(--color-border);
+}
+
+.cat_ai {
+  border-color: var(--color-accent-border);
+  background-color: var(--color-surface-white);
+}
+
+.badge:hover {
+  border-color: var(--color-accent-border);
+  background-color: #fafbfc;
+}
