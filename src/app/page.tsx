@@ -48,10 +48,33 @@ const aiStepIcons: IconName[] = [
   "shield-check",
 ];
 
-const caseSectorIcons: Record<string, { icon: IconName; type: string }> = {
-  "integracion-ecommerce-erp": { icon: "box", type: "ecommerce" },
-  "apis-atencion-telefonica": { icon: "phone-waves", type: "telephony" },
-  "apps-moviles-campo": { icon: "phone-leaf", type: "mobile" },
+const caseSectorConfigs: Record<
+  string,
+  {
+    icon: IconName;
+    cardModifier: string;
+    asideModifier: string;
+    iconModifier: string;
+  }
+> = {
+  "integracion-ecommerce-erp": {
+    icon: "box",
+    cardModifier: styles.caseCardEcommerce,
+    asideModifier: styles.caseVisualColEcommerce,
+    iconModifier: styles.caseVisualIconEcommerce,
+  },
+  "apis-atencion-telefonica": {
+    icon: "phone-waves",
+    cardModifier: styles.caseCardTelephony,
+    asideModifier: styles.caseVisualColTelephony,
+    iconModifier: styles.caseVisualIconTelephony,
+  },
+  "apps-moviles-campo": {
+    icon: "phone-leaf",
+    cardModifier: styles.caseCardMobile,
+    asideModifier: styles.caseVisualColMobile,
+    iconModifier: styles.caseVisualIconMobile,
+  },
 };
 
 const workflowBannerSteps: { step: string; label: string; icon: IconName }[] = [
@@ -393,42 +416,82 @@ export default function Home() {
             </div>
 
             <div className={styles.caseStudiesGrid}>
-              {caseStudies.map((study) => {
-                const sectorConfig = caseSectorIcons[study.id] || { icon: "nodes", type: "tools" };
+              {caseStudies.map((study, index) => {
+                const sectorConfig = caseSectorConfigs[study.id] || {
+                  icon: "nodes",
+                  cardModifier: "",
+                  asideModifier: "",
+                  iconModifier: "",
+                };
+                const caseNumber = String(index + 1).padStart(2, "0");
 
                 return (
                   <article
                     key={study.id}
-                    className={styles.caseCard}
-                    data-sector={sectorConfig.type}
+                    className={`${styles.caseCard} ${sectorConfig.cardModifier}`}
                   >
-                    <div className={styles.caseHeader}>
-                      <div className={styles.caseHeaderTop}>
-                        <div className={styles.caseHeaderMeta}>
-                          <span className={styles.caseIconBadge} aria-hidden="true">
-                            <AppIcon name={sectorConfig.icon} size={20} />
-                          </span>
-                          <span className={styles.caseSector}>{study.sector}</span>
+                    <div className={styles.caseCardLayout}>
+                      {/* Columna visual lateral */}
+                      <aside
+                        className={`${styles.caseVisualCol} ${sectorConfig.asideModifier}`}
+                        aria-hidden="true"
+                      >
+                        <div
+                          className={`${styles.caseVisualIconWrapper} ${sectorConfig.iconModifier}`}
+                        >
+                          <AppIcon name={sectorConfig.icon} size={34} />
                         </div>
-                        {study.badge && <span className={styles.caseBadge}>{study.badge}</span>}
-                      </div>
-                      <h3 className={styles.caseTitle}>{study.title}</h3>
-                    </div>
+                        <span className={styles.caseVisualNumber}>
+                          Caso {caseNumber}
+                        </span>
+                      </aside>
 
-                    <div className={styles.caseContent}>
-                      <div className={styles.caseField}>
-                        <span className={styles.caseLabel}>Desafío</span>
-                        <p className={styles.caseText}>{study.challenge}</p>
-                      </div>
+                      {/* Contenido principal del caso */}
+                      <div className={styles.caseMain}>
+                        <header className={styles.caseHeader}>
+                          <div className={styles.caseHeaderMeta}>
+                            <span className={styles.caseSector}>{study.sector}</span>
+                            <span className={styles.caseMobileIdentifier} aria-hidden="true">
+                              Caso {caseNumber}
+                            </span>
+                          </div>
+                          <h3 className={styles.caseTitle}>{study.title}</h3>
+                        </header>
 
-                      <div className={styles.caseField}>
-                        <span className={styles.caseLabel}>Responsabilidad</span>
-                        <p className={styles.caseText}>{study.responsibility}</p>
-                      </div>
+                        <div className={styles.caseTripleGrid}>
+                          <div className={`${styles.caseField} ${styles.caseFieldChallenge}`}>
+                            <div className={styles.caseFieldHeader}>
+                              <span
+                                className={`${styles.caseFieldDot} ${styles.caseDotChallenge}`}
+                                aria-hidden="true"
+                              />
+                              <span className={styles.caseLabel}>Desafío</span>
+                            </div>
+                            <p className={styles.caseText}>{study.challenge}</p>
+                          </div>
 
-                      <div className={styles.caseField}>
-                        <span className={styles.caseLabel}>Resultado</span>
-                        <p className={styles.caseText}>{study.result}</p>
+                          <div className={`${styles.caseField} ${styles.caseFieldResponsibility}`}>
+                            <div className={styles.caseFieldHeader}>
+                              <span
+                                className={`${styles.caseFieldDot} ${styles.caseDotResponsibility}`}
+                                aria-hidden="true"
+                              />
+                              <span className={styles.caseLabel}>Responsabilidad</span>
+                            </div>
+                            <p className={styles.caseText}>{study.responsibility}</p>
+                          </div>
+
+                          <div className={`${styles.caseField} ${styles.caseFieldResult}`}>
+                            <div className={styles.caseFieldHeader}>
+                              <span
+                                className={`${styles.caseFieldDot} ${styles.caseDotResult}`}
+                                aria-hidden="true"
+                              />
+                              <span className={styles.caseLabel}>Resultado</span>
+                            </div>
+                            <p className={styles.caseText}>{study.result}</p>
+                          </div>
+                        </div>
                       </div>
                     </div>
 
