@@ -234,7 +234,7 @@ export const contentData: ContentData = {
         "Registrar pedidos y mantener existencias consistentes entre canales de venta y el sistema empresarial central.",
       responsibility:
         "Desarrollo de un servicio en .NET para intercambiar órdenes e inventario entre las plataformas.",
-      technologies: [".NET", "APIs REST", "Azure", "Shopify", "Mercado Libre", "SAP"],
+      technologies: [".NET", "APIs REST", "Azure", "Shopify", "Mercado Libre"],
       result:
         "Servicio publicado en Azure para registrar órdenes de venta y actualizar existencias de manera fiable y automatizada entre las plataformas integradas.",
     },
